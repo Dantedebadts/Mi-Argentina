@@ -4,17 +4,12 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="theme-color" content="#322d72">
-
 <link rel="icon" href="data:,">
-
 <title>Mi Argentina - Proyecto</title>
-
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -23,32 +18,23 @@
 }
 
 body{
-    background:#dcdcdc;
+    background:#ebebeb;
     overflow-x:hidden;
     position:relative;
 }
 
 /* PANTALLAS */
-
 .screen{
     width:100%;
     min-height:100vh;
-
     position:fixed;
     inset:0;
-
     overflow-y:auto;
-
     opacity:0;
     pointer-events:none;
-
     transform:translateX(30px);
-
-    transition:
-    opacity .28s ease,
-    transform .28s ease;
-
-    background:#dcdcdc;
+    transition: opacity .28s ease, transform .28s ease;
+    background:#ebebeb;
 }
 
 .active{
@@ -59,7 +45,6 @@ body{
 }
 
 /* TOPBAR */
-
 .topbar{
     background:#322d72;
     color:white;
@@ -78,7 +63,6 @@ body{
 }
 
 /* GENERAL */
-
 .page{
     padding:20px;
 }
@@ -91,7 +75,6 @@ body{
 }
 
 /* LOGIN */
-
 .pin-title{
     font-size:30px;
     margin-bottom:40px;
@@ -130,7 +113,6 @@ body{
 }
 
 /* DOCUMENTOS */
-
 .doc-option{
     background:#efefef;
     border-radius:15px;
@@ -158,7 +140,6 @@ body{
 }
 
 /* DNI */
-
 .dni-card{
     background:#efefef;
     margin:18px;
@@ -171,8 +152,7 @@ body{
     padding:18px 24px 10px;
     font-size: 100%;
     color:#4a4a4a;
-    font-weight:500;
-    font-weight: bold;
+    font-weight:bold;
 }
 
 .dni-img{
@@ -219,7 +199,6 @@ body{
 }
 
 /* QR */
-
 .qr-section{
     border-top:1px solid #ddd;
     padding:20px;
@@ -250,7 +229,6 @@ canvas{
 }
 
 /* MODAL */
-
 .modal{
     position:fixed;
     inset:0;
@@ -317,13 +295,14 @@ canvas{
     color:white;
 }
 
+/* MENU LATERAL */
 .menuItem{
     display:flex;
     align-items:center;
-    gap:18px;
-    padding:22px 24px;
-    border-bottom:1px solid #ececec;
-    font-size:19px;
+    gap:24px;
+    padding:20px 24px;
+    border-bottom:1px solid #e2e2e2;
+    font-size:18px;
     color:#333;
     cursor:pointer;
     background:white;
@@ -334,9 +313,12 @@ canvas{
 }
 
 .menuIcon{
-    width:28px;
-    height:28px;
-    color:#322d72;
+    width:24px;
+    height:24px;
+    color:#757575;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     flex-shrink:0;
 }
 
@@ -361,663 +343,478 @@ canvas{
     line-height:1.4;
 }
 
-@keyframes showDetail{
-
-    from{
-        opacity:0;
-        transform:scale(.95);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-
+/* BOTONES DE LA GRILLA PRINCIPAL */
+.grid-item {
+    background: white;
+    border-radius: 16px;
+    padding: 22px 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.grid-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+    color: #322d72;
+}
+
+.grid-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.grid-text {
+    font-size: 15px;
+    font-weight: bold;
+    color: #111;
+}
+
+@keyframes showDetail{
+    from{ opacity:0; transform:scale(.95); }
+    to{ opacity:1; transform:scale(1); }
+}
 </style>
 
 </head>
 <body>
 
-<!-- LOGIN -->
-
 <div class="screen" id="loginScreen">
-
     <div class="topbar">
-        <div class="back">←</div>
+        <div class="back" onclick="showScreen('homeScreen')">←</div>
         Dni Digital
     </div>
-
     <div class="page">
-
         <div class="card">
-
-            <div class="pin-title">
-                Ingresá tu PIN de acceso
-            </div>
-
-            <input 
-                class="pin-input"
-                placeholder="123456"
-                type="password"
-            >
-
-            <button class="btn" onclick="goDNI()">
-                Ingresar
-            </button>
-
-            <div class="forgot" onclick="openModal()">
-                Olvidé mi PIN
-            </div>
-
+            <div class="pin-title">Ingresá tu PIN de acceso</div>
+            <input class="pin-input" placeholder="123456" type="password">
+            <button class="btn" onclick="goDNI()">Ingresar</button>
+            <div class="forgot" onclick="openModal()">Olvidé mi PIN</div>
         </div>
-
     </div>
-
 </div>
 
-<!-- HOME -->
-
 <div class="screen active" id="homeScreen">
-
-    <div style="
-    background:#322d72;
-    height:170px;
-    color:white;
-    border-bottom-left-radius:18px;
-    border-bottom-right-radius:18px;
-    padding:28px;
-    position:relative;
-    ">
-
-        <div onclick="openMenu()" style="
-        font-size:36px;
-        position:absolute;
-        left:28px;
-        top:22px;
-        cursor:pointer;
-        ">
+    <div style="background:#322d72; height:150px; color:white; padding:24px; position:relative;">
+        <div onclick="openMenu()" style="font-size:32px; position:absolute; left:24px; top:20px; cursor:pointer;">
             ☰
         </div>
-
-        <div style="
-        position:absolute;
-        right:28px;
-        top:20px;
-        font-size:42px;
-        font-weight:bold;
-        ">
-            miArgentina
+        <div style="position:absolute; right:24px; top:20px; font-size:28px; font-weight:500; letter-spacing: 0.5px;">
+            mi<span style="font-weight:bold;">Argentina</span>
         </div>
-
-        <div style="
-        text-align:center;
-        margin-top:48px;
-        font-size:28px;
-        font-weight:bold;
-        ">
-            ¡Hola!
+        <div id="welcomeText" style="text-align:center; margin-top:54px; font-size:24px; font-weight:bold;">
+            ¡Hola, NOMBRE APELLIDO!
         </div>
-
     </div>
 
-    <!-- CARD -->
+    <div style="padding: 16px; margin-top: -20px; display: flex; flex-direction: column; gap: 16px;">
+        
+        <div style="background: #e2e2e8; border-radius: 20px; padding: 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 48px; height: 48px; color: #322d72;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                </div>
+                <div style="font-size: 17px; color: #222; font-weight: 500;">No tenés turnos programados.</div>
+            </div>
+            <button style="background: #322d72; color: white; border: none; padding: 10px 18px; border-radius: 20px; font-size: 15px; font-weight: bold; cursor: pointer;">Solicitalo acá</button>
+        </div>
 
-    <div style="
-    margin:22px;
-    background:#efefef;
-    border-radius:28px;
-    padding:30px;
-    box-shadow:0 10px 20px rgba(0,0,0,.12);
-    ">
+        <div style="background: #cbdcd5; border-radius: 20px; padding: 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="font-size: 18px; color: #222; font-weight: 500; flex: 1; padding-right: 10px;">
+                ¡Todas tus credenciales están al día!
+            </div>
+            <div style="width: 100px; height: 70px; position: relative;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5" style="width: 100%; height: 100%;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><circle cx="7" cy="10" r="2"></circle><line x1="13" y1="9" x2="19" y2="9"></line><line x1="13" y1="13" x2="19" y2="13"></line><line x1="5" y1="15" x2="9" y2="15"></line></svg>
+                <div style="position: absolute; top: -10px; right: -5px; width: 32px; height: 32px; background: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #cbdcd5;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" style="width: 16px; height: 16px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+            </div>
+        </div>
 
-        <div style="
-        font-size:22px;
-        font-weight:bold;
-        margin-bottom:20px;
-        color:#333;
-        ">
+        <div style="font-size: 20px; font-weight: bold; color: #333; margin-top: 8px; margin-bottom: -4px;">
             ¿Qué necesitás hoy?
         </div>
 
-        <!-- GRID -->
-
-        <div style="
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:18px;
-        ">
-
-            <!-- DOCUMENTOS -->
-
-            <div onclick="goDocuments()" style="
-            background:white;
-            border-radius:20px;
-            padding:30px 20px;
-            text-align:center;
-            cursor:pointer;
-            box-shadow:0 8px 18px rgba(0,0,0,.08);
-            ">
-
-                <div style="
-                font-size:54px;
-                margin-bottom:12px;
-                ">
-                    <img src="data:image/jpeg;base64,/9j/4QE8RXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAAAmAAAAcgITAAMAAAABAAEAAIdpAAQAAAABAAAAmAAAAAAAAABIAAAAAQAAAEgAAAABQW5kcm9pZCBVUDFBLjIzMTAwNS4wMDcuUzkxMUJYWFM2Q1hJNAAACpAAAAcAAAAEMDIyMZADAAIAAAAUAAABFpARAAIAAAAHAAABKpEBAAcAAAAEAQIDAJKRAAIAAAAENTQ1AKAAAAcAAAAEMDEwMKABAAMAAAABAAEAAKACAAQAAAABAAAAZaADAAQAAAABAAAATqQGAAMAAAABAAAAAAAAAAAyMDI0OjExOjMwIDEzOjM4OjMwAC0wMzowMAAAAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/7QBgUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAACccAVoAAxslRxwCAAACAAIcAjwABjEzMzgzMBwCNwAIMjAyNDExMzAAOEJJTQQlAAAAAAAQNvWfjw3QkF5eM/in9Wh0uf/bAIQAAQEBAQEBAgEBAgMCAgIDBAMDAwMEBQQEBAQEBQYFBQUFBQUGBgYGBgYGBgcHBwcHBwgICAgICQkJCQkJCQkJCQEBAQECAgIEAgIECQYFBgkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJ/90ABAAH/8AAEQgATgBlAwEiAAIRAQMRAf/EAaIAAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKCxAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6AQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgsRAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A/f7/AILO/wDBXXUv2GLax+BnwKjt7v4h67aNdSXEwEkelWzHZFIYvuvNIQ3lq3ChcspBWvxU0X4T/wDBxj8ZtIt/iPY634y0+31ONZYYm1kacdjDIP2UTIYuv3WRWHcCrv7QumWXxc/4OSbPw144QXlhD4r0OIQOAUMdlp9tKiFTwVLplh3ya/uXACjA4Ar+y824iwXAWS5bh8DgaVWviKaq1J1I82+0UuiR5MaTrTld2S0P4bv+GVf+Djr/AKGnxj/4U3/3RR/wyr/wcdf9DT4x/wDCm/8Auiv7kqK+R/4mgx3/AELcL/4JRp/Zkf5mfw2/8Mq/8HHX/Q0+Mf8Awpv/ALoo/wCGVf8Ag46/6Gnxj/4U3/3RX9yVFH/E0GO/6FuF/wDBKD+zI/zM/ht/4ZV/4OOv+hp8Y/8AhTf/AHRR/wAMq/8ABx1/0NPjH/wpv/uiv7kqKP8AiaDHf9C3C/8AglB/Zkf5mfw2/wDDKv8Awcdf9DT4x/8ACm/+6KP+GVf+Djr/AKGnxj/4U3/3RX9yVFH/ABNBjv8AoW4X/wAEoP7Mj/Mz+G3/AIZW/wCDjr/oafGP/hTf/dFcl4l/aG/4Lp/8E1b3TPij8fb3W9U8OPcokg1y5XV7CYnjyJZBI7w7ugIKc42nNf3f18Nf8FMvCegeMf8Agnx8Z9N8RWyXUNt4N1m+jV1DBZ7KzkuYHGehSWNWB7EcV62Q/SKWOxtLBZpleHlRm1GSjTUXZ6aNdiZ5fyq8ZM2f2DP2zPAX7dv7OOkfHjwUgtJZ82up2BYM1lfwgebATxkcq6HA3RspwOg+yvk9q/lF/wCDXHxBqknwl+Lfhl5D9jtNX0y5ij7LJcW8ySN+KwRj8K/qi8+T1r8e8YuDKGRcT4zKsK/3dOXu+jSaXyvY7sHJ1KSmz//Q9v8AG/8AyszQ/wDY3af/AOmqGv7ia/h38cf8rM0P/Y3af/6aoa/uIr+nPpH/AMHJf+wWB5+A3n6le7u7WwtZL6+kWGGFS8kjkKqKoySSeAAOp7V+Cv7SX/Bw5+xb8D/GFx4I8EQ33jm6spDFcT6dtjtFZSQwSZ879pGOFx6EiuT/AODjf9qjxl8DP2TdF+EfgK5ksLz4jX8tpd3ER2sNOs41kuI1YcgyvJEp9U3jvXkH/BIz/gix+zTd/sxeG/2gP2mNBt/F+u+N7GDVba1vBvtLSyuVEtsqx8Au8RV2Y9M7R0rl4D4A4cwXDq4q4scpU6knClTho5OO7b6WHWrVHP2VI+2v2Pf+C6P7Gn7WPi60+G0k114P8R37iO1ttVCiGeRuFjjuF+XeeykL6A54r9ogQRkV/HJ/wXC/4JH/AAS/Z2+DS/tffsv2f/CMx6JeW0Grabbswg8u5lWGG4gH/LN0mZFIHBDZ6iv3B/4It/tPeKf2qv2BPC/jLx5O13r2hyz6Df3L8tO9kR5UjHuzW7xbz3bJrk8TPD3InkdLirhaUvq8pck4T+KErXWvYeHrT5/ZVD9W6K+ZP2wf2pvAX7GH7P8Arf7Q3xIguLnS9F8hGhtV3SySXMyQRKueB87jJPAH5V+Ef/ET7+zX/wBCDrn/AH+h/wDia/POEPCbiLPqEsTlGElUhF2bVt+2rRtVxVOm7Sdj+neiv5iP+In39mv/AKEHXP8Av9D/APE0f8RPv7Nf/Qg65/3+h/8Aia+t/wCJbOOf+hdP/wAl/wAzL+0aH8x/TvXx9/wUL/5MG+N3/Yg+I/8A02XFflP8Av8Ag4o/Zp+OXxn8M/BtfCes6TP4o1G20u2uZGjlRbi7kWGIMqAHaXYAkdK/Vf8A4KFf8mDfG7/sQfEf/psuK+YxPAWb5BnGEw+cUHSlKUWk7bcyXQ1jXhODcGfz1/8ABrb/AMiH8Y/+v/Rf/RV3X9W1fyk/8Gtv/Ih/GP8A6/8ARf8A0Vd1/VtX3f0mP+S6zH/Ev/SIjyz/AHeJ/9H3Dxx/yszQ/wDY3af/AOmqGv7iK/h38cf8rMsP/Y3af/6aoa/uIr+nPpH/AMHJf+waB5+B3n6n87//AAcc/st+MPjf+yZonxa8CWkl/d/DrUJbu7t4gWb+z7uMR3EgUdfKeOJj6JuPavJf+CRX/BaP9maz/Ze8M/s//tK69B4R1/wTZQ6Rb3N2Ctrd2dsojtSrgHDrEFRlP93PevSP+C6n/BVHV/2U/D0H7LvwMkjPjfxPZmW/umVZRp+nzhowFQ5Bnm52AjCqMkcrX5C/sif8G637Qvx/8E2nxQ+OeuReBbfVNs8Ng0JlvjC4DCR04SMnPCHkV+o8C8P5TiPDunh+OKvsKHtHLDyXx6/FaNtV/XY5a05KveirvqfSf/Bcb/grj8DP2g/gp/wyJ+zDf/8ACTR61eWs+ranbqfs/lW0izRQQ5ALu0yRscDAC471+3v/AARb/Zd8W/sofsD+GfBfxAga017XJp9ev7V/vW73u3yomHZkgSIOOz5Ffywftk/8EXv2qv8AgnbYWv7THwx1aDxZo/huZL2a8tYsT6e0TgpLLBICGjHG5gCF71/T9/wR8/4KT23/AAUD+BtxF4wWK08eeEvKt9Zgi4SZJAfJu417LLtYMv8ACykdMVxeMGSZfhuAsPQ4Nmq2CjU5qs/t89rR5l0X/A6Dwk5Os/baPofqP8Rfhx4E+Lfg29+HvxL0q31rRNSUJc2d0geKRVYMNy+zAEehFfDv/DpH/gm5/wBEe8O/9+D/APFV9Bftd/tReAf2NfgDrn7QvxLiuJ9J0PyFeK1XdLI9zMlvEqjpy8i5J4A5r8B/+Io79nj/AKJl4j/8CLP/AOKr+fvDzgvjPMsNOrw3Co6adnyS5Ve3quh3V61GLtUsfrt/w6Q/4Juf9Ee8Pf8Afg//ABVH/DpH/gm5/wBEe8O/9+D/APFV+Rsf/B0b+zq0iq/wz8RqpIBP2i04H03V/Ql+zH+0H4N/ap+BPhz4/wDw/jmi0jxLbG4gjuF2yJskaJ1YequjD0OOK9DjHJ+PuH6UK+cTrUoydk3Ue/bSQqM6E9IWPFvhz/wTY/YT+EnjOw+Ifw4+F+h6TrWlyia0u4IMSQyLyrISTgg9Djiug/4KFf8AJg3xu/7EHxJ/6bLivsGvj7/goX/yYN8bv+xB8R/+my4r8+yvOcXjc1w08ZVlNqUV7zb+0u5vKCUWkj+er/g1t/5EP4x/9f8Aov8A6Ku6/q2r+Un/AINbf+RD+Mf/AF/6L/6Ku6/q2r9X+kx/yXWY/wCJf+kRJyz/AHeJ/9L3Dxx/ysyw/wDY3af/AOmqGv7iK/h38cf8rMsP/Y3af/6aoa/uIr+nfpIfwsl/7BoHn4DefqfxZ+L/ANln4tftC/8ABw9dzfEzw3eXnhqz16DVZbi4gY2Z03TLJHtcsRsKO0Mce3uTgjk1/aWAAMDpSBQDnHNOr8o8QPEfEZ/HCU6lNQhh6apxS206+VzpoYdQv5mN4h0DR/FWg3vhnxDbR3lhqED21xbyqGjlilUo6Mp4KspII9K/jq/4Il/s4/HX9mL/AIKtfEb4dX+hX1r4e0rTdY0y4u5Y2S2khivofscqORtfzNilMfwsT0zX9l1N2LnIo4P8R8RlGWY/KoQUoYqCi7/Zs9JJdwq4dSlGXY4r4jfDfwJ8XPBl98PPiXpVvrWiakgS5s7pA8UgVg65Hsygj0IBFfGf/Dq3/gnr/wBEp0P/AL9v/wDF1+gdFfJZbxHmGCg6eDrygn0jJpfhY0lTi90fn5/w6s/4J6/9Ep0P/v2//wAXX254M8GeFfh54VsPBHgiwh0vSdMhW3tbW3UJFFGgwqqo6AV09FLMuIswxsVDGV5TS2UpN2+8I04x2QV8ff8ABQv/AJMG+N3/AGIPiP8A9NlxX2DXx9/wUL/5MG+N3/Yg+I//AE2XFacMf8jLD/44/mgqfCz+er/g1t/5EP4x/wDX/ov/AKKu6/q2r+Un/g1t/wCRD+Mf/X/ov/oq7r+rav2n6TH/ACXWY/4l/wCkRM8s/wB3if/T9W/4KI6q37F//BerTP2i/HEEsfhy61XRNf8AO2Ft1l9mhs7xowPvGNo5sAc8Div7V/Bfxj+FXxE8MWXjTwT4h0/U9L1CIS29zb3EbxyIehUg4r5K/wCCgf8AwTr+B/8AwUJ+GUPg/wCJyyafrGleY+j6zagefZySAAgqeJIWKrvjOM4GCp5r+Z/Wv+DZ/wDa50DUpbT4afFDw+dNJyGuHv7SRj0y0cMEq/8Aj5r+wcM+HeOcnwNHH4t4bE4WCpv3HOMorZ+7szyn7SjJ8qumf2ff8Jd4U/6CVr/39T/Gj/hLvCn/AEErX/v6n+NfxWf8Q3n7fn/RUPDH/gbqv/yHR/xDeft+f9FQ8Mf+Buq//Idcv/EvXDn/AEOl/wCCan+QfX6n8h/an/wl3hT/AKCVr/39T/Gj/hLvCn/QStf+/qf41/FZ/wAQ3n7fn/RUPDH/AIG6r/8AIdH/ABDeft+f9FQ8Mf8Agbqv/wAh0f8AEvXDn/Q6X/gmp/kH1+p/If2p/wDCXeFP+gla/wDf1P8AGj/hLvCn/QStf+/qf41/FZ/xDeft+f8ARUPDH/gbqv8A8h0f8Q3n7fn/AEVDwx/4G6r/APIdH/EvXDn/AEOl/wCCan+QfX6n8h/an/wl3hT/AKCVr/39T/Gj/hLvCn/QStf+/qf41/FZ/wAQ3n7fn/RUPDH/AIG6r/8AIdH/ABDeft+f9FQ8Mf8Agbqv/wAh0f8AEvXDn/Q6X/gmp/kH1+p/If2p/wDCXeFP+gla/wDf1P8AGvy7/wCCvv7XXwX+Bv7CvxD8O6/rdpJrPjPQb/QNKsI5VeeebUIGtiyopzsiWTe7dAB7gV/Ph/xDeft+f9FQ8Mf+Buq//IdezfBL/g2S8d3/AIztNZ/ai+I9ndabG+bm30QTyzzov3UE91HH5eR/FsbHQCu3LfB/hDJ8RTzPH5s6lOk1JxjSmm+XW12rITxdWS5YwPov/g2F+FXiHQv2b/iF8U9TheCy8Sa5b2tnvUqJV06A75EJ+8u+4KZHG5GHav6cvsTVxPwi+E3gD4F/DTRvhF8LdPj0rQNAtktLK1j6JGnqTyzMcszHlmJJ5Nej4r+e/E7jd8QZ/is4UeVVZXS7LZfgkejhqfs6ah2P/9k=" alt="misdocumentos">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+            
+            <div class="grid-item" onclick="goDocuments()">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="19" y2="13"></line><line x1="5" y1="15" x2="13" y2="15"></line></svg>
                 </div>
-
-                <div style="
-                font-size:22px;
-                font-weight:bold;
-                color:#333;
-                ">
-                    Documentos
-                </div>
-
+                <div class="grid-text">Documentos</div>
             </div>
 
-            <!-- RESTO -->
-
-            <div style="
-            background:white;
-            border-radius:20px;
-            padding:30px 20px;
-            text-align:center;
-            opacity:.65;
-            ">
-
-                <div style="
-                font-size:54px;
-                margin-bottom:12px;
-                ">
-                    🚗
+            <div class="grid-item" style="opacity: 0.85;">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1 .4-1 1v4H2c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
                 </div>
-
-                <div style="
-                font-size:22px;
-                font-weight:bold;
-                ">
-                    Vehículos
-                </div>
-
+                <div class="grid-text">Vehículos</div>
             </div>
 
-            <div style="
-            background:white;
-            border-radius:20px;
-            padding:30px 20px;
-            text-align:center;
-            opacity:.65;
-            ">
-
-                <div style="
-                font-size:54px;
-                margin-bottom:12px;
-                ">
-                    ❤
+            <div class="grid-item" style="opacity: 0.85;">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </div>
-
-                <div style="
-                font-size:22px;
-                font-weight:bold;
-                ">
-                    Salud
-                </div>
-
+                <div class="grid-text">Salud</div>
             </div>
 
-            <div style="
-            background:white;
-            border-radius:20px;
-            padding:30px 20px;
-            text-align:center;
-            opacity:.65;
-            ">
-
-                <div style="
-                font-size:54px;
-                margin-bottom:12px;
-                ">
-                    💼
+            <div class="grid-item" style="opacity: 0.85;">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                 </div>
+                <div class="grid-text">Trabajo</div>
+            </div>
 
-                <div style="
-                font-size:22px;
-                font-weight:bold;
-                ">
-                    Trabajo
+            <div class="grid-item" style="opacity: 0.85;">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line><path d="M10 9h3a2 2 0 0 1 0 4h-4a2 2 0 0 0 0 4h5"></path></svg>
                 </div>
+                <div class="grid-text">Cobros</div>
+            </div>
 
+            <div class="grid-item" style="opacity: 0.85;">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <div class="grid-text">Trámites</div>
+            </div>
+
+            <div class="grid-item" style="opacity: 0.85;">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+                <div class="grid-text">Turnos</div>
+            </div>
+
+            <div class="grid-item" style="opacity: 0.85;">
+                <div class="grid-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="grid-text">Hijos</div>
             </div>
 
         </div>
 
+        <div style="background: #cfc6c6; border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;" onclick="openModal()">
+            <div style="width: 50px; height: 50px; background: #b0a7a7; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width: 26px; height: 26px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div>
+                <div style="font-size: 17px; font-weight: bold; color: #222;">Completá tu perfil</div>
+                <div style="font-size: 14px; color: #555;">Mantené todos tus datos actualizados</div>
+            </div>
+        </div>
+
+        <div style="background: #c3cbd6; border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;">
+            <div style="width: 50px; height: 50px; background: #a2abb8; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width: 26px; height: 26px;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            <div>
+                <div style="font-size: 17px; font-weight: bold; color: #222;">Suscribí servicios</div>
+                <div style="font-size: 14px; color: #555;">Elegí los servicios que querés ver en la aplicación</div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- BOTTOM BAR -->
-
-    <div style="
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#efefef;
-    display:flex;
-    justify-content:space-around;
-    padding:18px 0;
-    border-top:1px solid #ddd;
-    ">
-
-        <div style="
-        text-align:center;
-        color:#322d72;
-        font-weight:bold;
-        ">
+    <div style="margin-top: 50px; background:#f5f5f5; display:flex; justify-content:space-around; padding:16px 0; border-top:1px solid #ccc; width:100%;">
+        <div style="text-align:center; color:#322d72; font-weight:bold; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;" onclick="showScreen('homeScreen')">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
             Inicio
         </div>
-
-        <div style="
-        text-align:center;
-        opacity:.45;
-        ">
+        <div style="text-align:center; opacity:.5; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
             Novedades
         </div>
-
-        <div style="
-        text-align:center;
-        opacity:.45;
-        ">
+        <div style="text-align:center; opacity:.5; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             Teléfonos
         </div>
-
     </div>
-
 </div>
-
-<!-- DOCUMENTOS -->
 
 <div class="screen" id="docsScreen">
-
     <div class="topbar">
-        <div class="back" onclick="goLogin()">←</div>
+        <div class="back" onclick="showScreen('homeScreen')">←</div>
         Documentos
     </div>
-
     <div class="page">
-
         <div class="doc-option" onclick="showScreen('loginScreen')">
-
-            <div class="doc-left">
-                Documento Nacional de Identidad (DNI)
-            </div>
-
+            <div class="doc-left">Documento Nacional de Identidad (DNI)</div>
             <div class="arrow">⌄</div>
-
         </div>
-
         <div class="doc-option" onclick="showScreen('loginScreen')">
-
-            <div class="doc-left">
-                Licencia Nacional de Conducir
-            </div>
-
+            <div class="doc-left">Licencia Nacional de Conducir</div>
             <div class="arrow">⌄</div>
-
         </div>
-
     </div>
-
 </div>
 
-<!-- DNI -->
-
 <div class="screen" id="dniScreen">
-
     <div class="topbar">
         <div class="back" onclick="goDocuments()">←</div>
         Dni Digital
     </div>
-
     <div class="dni-card">
-
-        <div class="top-name" id="topName">
-            NOMBRE APELLIDO
-        </div>
-
-        <img 
-            id="dniImage"
-            class="dni-img"
-            style="display:none"
-        >
-
-        <div id="emptyDNI">
-            No hay imagen cargada
-        </div>
-
+        <div class="top-name" id="topName">NOMBRE APELLIDO</div>
+        <img id="dniImage" class="dni-img" style="display:none">
+        <div id="emptyDNI">No hay imagen cargada</div>
         <div class="update" id="updateText"></div>
-
         <div class="actions">
-
-            <div class="action" onclick="openDetail()">
-                Ver detalle
-            </div>
-
-            <div class="action" onclick="toggleDNI()">
-                Desactivar DNI
-            </div>
-
+            <div class="action" onclick="openDetail()">Ver detalle</div>
+            <div class="action" onclick="toggleDNI()">Desactivar DNI</div>
         </div>
-
         <div class="qr-section">
-
             <div class="qr-header" onclick="toggleQR()">
-
-                <div>
-                    Verifica código QR
-                </div>
-
-                <div id="qrArrow">
-                    ⌄
-                </div>
-
+                <div>Verifica código QR</div>
+                <div id="qrArrow">⌄</div>
             </div>
-
             <div class="qr-content" id="qrContent">
-
                 <canvas id="qrCanvas"></canvas>
-
                 <div class="info" id="qrInfo"></div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 
-<!-- MODAL -->
-
 <div class="modal" id="modal">
-
     <div class="modal-content">
-
-        <div class="modal-title">
-            Editar Datos
-        </div>
-
-        <!-- NOMBRE -->
-
+        <div class="modal-title">Editar Datos</div>
         <div class="modal-field">
-
-            <div class="modal-label">
-                Nombre completo
-            </div>
-
-            <input 
-                id="editName"
-                class="modal-input"
-                type="text"
-                placeholder="NOMBRE APELLIDO"
-                style="text-transform:uppercase"
-                oninput="this.value = this.value.toUpperCase()"
-            >
-
+            <div class="modal-label">Nombre completo</div>
+            <input id="editName" class="modal-input" type="text" placeholder="NOMBRE APELLIDO" style="text-transform:uppercase" oninput="this.value = this.value.toUpperCase()">
         </div>
-
-        <!-- DNI -->
-
         <div class="modal-field">
-
-            <div class="modal-label">
-                DNI
-            </div>
-
-            <input 
-                id="editDNI"
-                class="modal-input"
-                type="text"
-                placeholder="00.000.000"
-                maxlength="10"
-                inputmode="numeric"
-                oninput="formatDNI(this)"
-            >   
-
+            <div class="modal-label">DNI</div>
+            <input id="editDNI" class="modal-input" type="text" placeholder="00.000.000" maxlength="10" inputmode="numeric" oninput="formatDNI(this)">
         </div>
-
-        <!-- NACIMIENTO -->
-
         <div class="modal-field">
-
-            <div class="modal-label">
-                Fecha de nacimiento
-            </div>
-
-            <input 
-                id="editBirth"
-                class="modal-input"
-                type="date"
-            >
-
+            <div class="modal-label">Fecha de nacimiento</div>
+            <input id="editBirth" class="modal-input" type="date">
         </div>
-
-        <!-- FOTO -->
-
         <div class="modal-field">
-
-            <div class="modal-label">
-                Imagen del DNI
-            </div>
-
-            <input 
-                type="file"
-                id="modalImage"
-                accept="image/*"
-                class="modal-input"
-            >
-
+            <div class="modal-label">Imagen del DNI</div>
+            <input type="file" id="modalImage" accept="image/*" class="modal-input">
         </div>
-
-        <!-- BOTONES -->
-
         <div class="modal-buttons">
+            <button class="modal-btn cancel-btn" onclick="closeModal()">Cancelar</button>
+            <button class="modal-btn save-btn" onclick="saveModal()">Guardar</button>
+        </div>
+    </div>
+</div>
 
-            <button 
-                class="modal-btn cancel-btn"
-                onclick="closeModal()"
-            >
-                Cancelar
-            </button>
+<div id="sideMenu" style="position:fixed; top:0; left:-100%; width:85%; max-width:420px; height:100%; background:#e0e0e0; z-index:99999; transition:.35s; overflow-y:auto; box-shadow:10px 0 30px rgba(0,0,0,.25);">
+    
+    <div style="background:#322d72; padding:30px 20px 24px 20px; color:white; position:relative;">
+        <div onclick="closeMenu()" style="position:absolute; left:20px; top:20px; font-size:30px; cursor:pointer;">
+            ←
+        </div>
+        <div style="position:absolute; left:70px; top:22px; font-size:26px; font-weight:500;">
+            mi<span style="font-weight:bold;">Argentina</span>
+        </div>
 
-            <button 
-                class="modal-btn save-btn"
-                onclick="saveModal()"
-            >
-                Guardar
-            </button>
+        <div style="display:flex; align-items:center; gap:16px; margin-top:50px;">
+            <div style="width:70px; height:70px; border-radius:50%; overflow:hidden; flex-shrink:0; position:relative; display:flex; align-items:center; justify-content:center; background:#777;">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:75%; height:75%; color:white; opacity:0.95;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z"></path></svg>
+                
+                <div style="position:absolute; bottom:0; left:0; width:22px; height:22px; background:#4caf50; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #322d72;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" style="width:12px; height:12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+            </div>
+            <div>
+                <div id="menuName" style="font-size:20px; font-weight:bold; letter-spacing:0.3px;">DANTE DE BADTS EVANS WEISS</div>
+                <div style="font-size:16px; margin-top:2px; opacity:0.9;" id="menuCUIL">CUIL: 20-46836521-9</div>
+                <div style="color:#a5d6a7; font-size:14px; font-weight:500; margin-top:4px;">Identidad validada</div>
+            </div>
+        </div>
+    </div>
 
+    <div style="background:#ebebeb;">
+        
+        <div class="menuItem">
+            <div class="menuIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            Mi perfil
+        </div>
+
+        <div class="menuItem">
+            <div class="menuIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            Hijos/as asociados
+        </div>
+
+        <div class="menuItem">
+            <div class="menuIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            Suscribir servicios
+        </div>
+
+        <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
+            <div class="menuIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            Seguridad y privacidad
+        </div>
+
+        <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
+            <div class="menuIcon" style="font-weight: bold; font-size: 14px;">mi</div>
+            Acerca de
+        </div>
+
+        <div class="menuItem">
+            <div class="menuIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </div>
+            Términos y condiciones
+        </div>
+
+        <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
+            <div class="menuIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            </div>
+            Cerrar sesión
+        </div>
+
+        <div class="menuItem" onclick="closeMenu()">
+            <div class="menuIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </div>
+            Volver al inicio
         </div>
 
     </div>
+</div>
 
+<div id="menuOverlay" onclick="closeMenu()" style="position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:9999; display:none;"></div>
+
+<div id="detailModal" style="position:fixed; inset:0; background:rgba(0,0,0,.55); backdrop-filter:blur(4px); display:none; justify-content:center; align-items:center; z-index:999999; padding:20px;">
+    <div style="width:100%; max-width:520px; background:white; border-radius:28px; overflow:hidden; animation:showDetail .25s ease;">
+        <div style="background:#322d72; color:white; padding:24px; font-size:26px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+            <div>Documento Digital</div>
+            <div onclick="closeDetail()" style="cursor:pointer; font-size:34px;">✕</div>
+        </div>
+        <div style="padding:26px;">
+            <div style="display:flex; gap:22px; align-items:flex-start; margin-bottom:28px;">
+                <img id="detailPhoto" style="width:120px; height:150px; object-fit:cover; border-radius:14px; background:#eee;">
+                <div style="flex:1;">
+                    <div style="color:#777; margin-bottom:4px;">Nombre completo</div>
+                    <div id="detailName" style="font-size:24px; font-weight:bold; margin-bottom:18px;"></div>
+                    <div style="color:#777; margin-bottom:4px;">DNI</div>
+                    <div id="detailDNI" style="font-size:22px; font-weight:bold;"></div>
+                </div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Número de trámite</div>
+                <div class="detailValue">00581294731</div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Nacionalidad</div>
+                <div class="detailValue">Argentina</div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Fecha de nacimiento</div>
+                <div class="detailValue" id="detailBirth"></div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Domicilio</div>
+                <div class="detailValue">Pasaje Carabelas del Sur 1847, Parque Chas, Ciudad Autónoma de Buenos Aires</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-
 /* DATOS */
-
 let data = {
-    name:"NOMBRE APELLIDO",
-    dni:"00.000.000",
-    birth:"01 ENE 2000",
+    name:"DANTE DE BADTS EVANS WEISS",
+    dni:"46.836.521",
+    birth:"01 ENE 2005",
     active:true,
     customImage:null
 };
 
 /* STORAGE */
-
 function saveData(){
-
-    localStorage.setItem(
-        "miArgentina",
-        JSON.stringify(data)
-    );
-
+    localStorage.setItem("miArgentina", JSON.stringify(data));
 }
 
 /* MENU */
-
 function openMenu(){
-
-    document.getElementById("sideMenu")
-        .style.left = "0";
-
-    document.getElementById("menuOverlay")
-        .style.display = "block";
-
+    document.getElementById("sideMenu").style.left = "0";
+    document.getElementById("menuOverlay").style.display = "block";
 }
 
 function closeMenu(){
-
-    document.getElementById("sideMenu")
-        .style.left = "-100%";
-
-    document.getElementById("menuOverlay")
-        .style.display = "none";
-
+    document.getElementById("sideMenu").style.left = "-100%";
+    document.getElementById("menuOverlay").style.display = "none";
 }
 
 /* DETALLE */
-
 function openDetail(){
+    document.getElementById("detailModal").style.display = "flex";
+    document.getElementById("detailName").innerText = data.name;
+    document.getElementById("detailDNI").innerText = data.dni;
+    document.getElementById("detailBirth").innerText = data.birth;
 
-    document.getElementById("detailModal")
-        .style.display = "flex";
-
-    document.getElementById("detailName")
-        .innerText = data.name;
-
-    document.getElementById("detailDNI")
-        .innerText = data.dni;
-
-    document.getElementById("detailBirth")
-        .innerText = data.birth;
-
-    const detailPhoto =
-        document.getElementById("detailPhoto");
-
+    let detailPhoto = document.getElementById("detailPhoto");
     if(data.customImage){
-
         detailPhoto.src = data.customImage;
-
     }else{
-
-        detailPhoto.src =
-        "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
-
+        detailPhoto.src = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
     }
-
 }
 
 function closeDetail(){
-
-    document.getElementById("detailModal")
-        .style.display = "none";
-
+    document.getElementById("detailModal").style.display = "none";
 }
 
 function loadData(){
-
-    const saved =
-        localStorage.getItem("miArgentina");
-
+    let saved = localStorage.getItem("miArgentina");
     if(saved){
-
         data = JSON.parse(saved);
-
     }
-
     render();
-
 }
 
 /* RENDER */
-
 function render(){
+    document.getElementById("topName").innerText = data.name;
+    document.getElementById("welcomeText").innerText = "¡Hola, " + data.name + "!";
 
-    document.getElementById("topName")
-        .innerText = data.name;
+    let now = new Date();
+    document.getElementById("updateText").innerText = "Última actualización: " + now.toLocaleDateString() + " " + now.toLocaleTimeString();
 
-    const now = new Date();
-
-    document.getElementById("updateText")
-        .innerText =
-        "Última actualización: " +
-        now.toLocaleDateString() +
-        " " +
-        now.toLocaleTimeString();
-
-    const dniImage =
-        document.getElementById("dniImage");
-
-    const emptyDNI =
-        document.getElementById("emptyDNI");
+    let dniImage = document.getElementById("dniImage");
+    let emptyDNI = document.getElementById("emptyDNI");
 
     if(data.customImage){
-
         dniImage.src = data.customImage;
-
         dniImage.style.display = "block";
-
         emptyDNI.style.display = "none";
-
     }else{
-
         dniImage.style.display = "none";
-
         emptyDNI.style.display = "block";
-
     }
 
-/* MENU DATA */
-
-document.getElementById("menuName")
-    .innerText = data.name;
-
-document.getElementById("menuDNI")
-    .innerText = data.dni;
-
-const profileImg =
-    document.getElementById("menuProfileImage");
-
-const noPhoto =
-    document.getElementById("menuNoPhoto");
-
-if(data.customImage){
-
-    profileImg.src = data.customImage;
-
-    profileImg.style.display = "block";
-
-    noPhoto.style.display = "none";
-
-}else{
-
-    profileImg.style.display = "none";
-
-    noPhoto.style.display = "flex";
-
-}
+    /* MENU DATA */
+    document.getElementById("menuName").innerText = data.name;
+    
+    let cleanDNI = data.dni.replace(/\./g, "");
+    document.getElementById("menuCUIL").innerText = "CUIL: 20-" + cleanDNI + "-9";
 
     generateQR();
-
 }
 
 /* QR */
-
 function generateQR(){
-
     QRCode.toCanvas(
         document.getElementById("qrCanvas"),
         JSON.stringify({
@@ -1026,601 +823,99 @@ function generateQR(){
             nacimiento:data.birth,
             estado:data.active
         }),
-        {
-            width:220
-        }
+        { width:220 }
     );
 
-    document.getElementById("qrInfo")
-        .innerHTML = `
-        <b>${data.name}</b><br>
-        DNI: ${data.dni}<br>
-        Nacimiento: ${data.birth}<br><br>
-        Estado:
-        ${data.active
-            ? "Documento válido"
-            : "Documento desactivado"}
-    `;
-
+    document.getElementById("qrInfo").innerHTML = "<b>" + data.name + "</b><br>DNI: " + data.dni + "<br>Nacimiento: " + data.birth + "<br><br>Estado: " + (data.active ? "Documento válido" : "Documento desactivado");
 }
 
-/* QR */
-
 function toggleQR(){
-
-    const qr =
-        document.getElementById("qrContent");
-
+    let qr = document.getElementById("qrContent");
     if(qr.style.display === "block"){
-
         qr.style.display = "none";
-
-        document.getElementById("qrArrow")
-            .innerText = "⌄";
-
+        document.getElementById("qrArrow").innerText = "⌄";
     }else{
-
         qr.style.display = "block";
-
-        document.getElementById("qrArrow")
-            .innerText = "⌃";
-
+        document.getElementById("qrArrow").innerText = "⌃";
     }
-
 }
 
 /* ACTIVAR / DESACTIVAR */
-
 function toggleDNI(){
-
     data.active = !data.active;
-
     saveData();
-
     render();
-
 }
 
 /* PANTALLAS */
-
 function showScreen(id){
-
-    document
-        .querySelectorAll(".screen")
-        .forEach(s => s.classList.remove("active"));
-
-    document
-        .getElementById(id)
-        .classList.add("active");
-
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
 }
 
-function goDocuments(){
-    showScreen("docsScreen");
-}
-
-function goLogin(){
-    showScreen("docsScreen");
-}
-
-function goDNI(){
-    showScreen("dniScreen");
-}
+function goDocuments(){ showScreen("docsScreen"); }
+function goLogin(){ showScreen("docsScreen"); }
+function goDNI(){ showScreen("dniScreen"); }
 
 /* FORMATO DNI */
-
 function formatDNI(input){
-
-    let value =
-        input.value.replace(/\D/g,'');
-
+    let value = input.value.replace(/\D/g,'');
     value = value.substring(0,8);
-
     if(value.length > 6){
-
-        value =
-            value.replace(
-                /^(\d{2})(\d{3})(\d{3})$/,
-                '$1.$2.$3'
-            );
-
+        value = value.replace(/^(\d{2})(\d{3})(\d{3})$/, '$1.$2.$3');
     }else if(value.length > 3){
-
-        value =
-            value.replace(
-                /^(\d{1,2})(\d{3})(\d+)$/,
-                '$1.$2.$3'
-            );
-
+        value = value.replace(/^(\d{1,2})(\d{3})(\d+)$/, '$1.$2.$3');
     }
-
     input.value = value;
-
 }
 
 /* MODAL */
-
 function openModal(){
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("editName").value = data.name;
+    document.getElementById("editDNI").value = data.dni;
+    document.getElementById("editBirth").value = data.birth;
+}
 
-    document.getElementById("modal")
-        .style.display = "flex";
-
-    document.getElementById("editName")
-        .value = data.name;
-
-    document.getElementById("editDNI")
-        .value = data.dni;
-
-    document.getElementById("editBirth")
-        .value = data.birth;
-
+let inputDate = document.getElementById("editBirth");
+if (inputDate) {
+    inputDate.type = "date";
+    inputDate.placeholder = "01 ENE 2005";
 }
 
 function closeModal(){
-
-    document.getElementById("modal")
-        .style.display = "none";
-
+    document.getElementById("modal").style.display = "none";
 }
 
 function saveModal(){
+    data.name = document.getElementById("editName").value;
+    data.dni = document.getElementById("editDNI").value;
+    data.birth = document.getElementById("editBirth").value;
 
-    data.name =
-        document.getElementById("editName").value;
-
-    data.dni =
-        document.getElementById("editDNI").value;
-
-    const rawDate =
-    document.getElementById("editBirth").value;
-
-if(rawDate){
-
-    const date = new Date(rawDate);
-
-    const months = [
-        "ENE","FEB","MAR","ABR",
-        "MAY","JUN","JUL","AGO",
-        "SEP","OCT","NOV","DIC"
-    ];
-
-    const day =
-        String(date.getDate()).padStart(2,'0');
-
-    const month =
-        months[date.getMonth()];
-
-    const year =
-        date.getFullYear();
-
-    data.birth =
-        `${day} ${month} ${year}`;
-
-}
-
-    const imageInput =
-        document.getElementById("modalImage");
-
-    const file =
-        imageInput.files[0];
+    let imageInput = document.getElementById("modalImage");
+    let file = imageInput.files[0];
 
     if(file){
-
-        const reader = new FileReader();
-
+        let reader = new FileReader();
         reader.onload = function(event){
-
-            data.customImage =
-                event.target.result;
-
+            data.customImage = event.target.result;
             finishSave();
-
         }
-
         reader.readAsDataURL(file);
-
     }else{
-
         finishSave();
-
     }
-
 }
 
 function finishSave(){
-
     saveData();
-
     render();
-
     closeModal();
-
 }
 
 /* INICIAR */
-
 loadData();
-
 </script>
-<!-- MENU LATERAL -->
-
-<div id="sideMenu" style="
-position:fixed;
-top:0;
-left:-100%;
-width:85%;
-max-width:420px;
-height:100%;
-background:#f4f4f4;
-z-index:99999;
-transition:.35s;
-overflow-y:auto;
-box-shadow:10px 0 30px rgba(0,0,0,.25);
-">
-
-    <!-- HEADER -->
-
-    <div style="
-    background:#322d72;
-    padding:34px 24px;
-    color:white;
-    position:relative;
-    ">
-
-        <!-- CERRAR -->
-
-        <div onclick="closeMenu()" style="
-        position:absolute;
-        right:24px;
-        top:18px;
-        font-size:34px;
-        cursor:pointer;
-        ">
-            ✕
-        </div>
-
-        <!-- PERFIL -->
-
-        <div style="
-        display:flex;
-        align-items:center;
-        gap:18px;
-        margin-top:18px;
-        ">
-
-            <!-- FOTO -->
-
-            <div style="
-            width:78px;
-            height:78px;
-            border-radius:50%;
-            background:white;
-            overflow:hidden;
-            flex-shrink:0;
-            ">
-
-                <img 
-                    id="menuProfileImage"
-                    src=""
-                    style="
-                    width:100%;
-                    height:100%;
-                    object-fit:cover;
-                    display:none;
-                    "
-                >
-
-                <div id="menuNoPhoto" style="
-                width:100%;
-                height:100%;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                color:#322d72;
-                font-size:34px;
-                font-weight:bold;
-                ">
-                    ?
-                </div>
-
-            </div>
-
-            <!-- DATOS -->
-
-            <div>
-
-                <div id="menuName" style="
-                font-size:24px;
-                font-weight:bold;
-                margin-bottom:6px;
-                ">
-                    NOMBRE APELLIDO
-                </div>
-
-                <div id="menuDNI" style="
-                font-size:18px;
-                margin-bottom:8px;
-                ">
-                    00.000.000
-                </div>
-
-                <div style="
-                color:#d6d6d6;
-                font-size:15px;
-                ">
-                    Identidad validada
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- OPCIONES -->
-
-    <div style="
-    background:white;
-    margin-top:12px;
-    ">
-
-        <!-- ITEM -->
-
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M4 20c2-4 14-4 16 0"></path>
-                </svg>
-            </div>
-            Mi perfil
-        </div>
-
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="9" cy="8" r="3"></circle>
-                    <circle cx="17" cy="10" r="3"></circle>
-                    <path d="M2 20c1-4 10-4 12 0"></path>
-                </svg>
-            </div>
-            Hijos/as asociados
-        </div>
-
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2v20"></path>
-                    <path d="M17 5H9a4 4 0 0 0 0 8h6a4 4 0 0 1 0 8H6"></path>
-                </svg>
-            </div>
-            Suscribir servicios
-        </div>
-
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-            </div>
-            Seguridad y privacidad
-        </div>
-
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 8v4"></path>
-                    <path d="M12 16h.01"></path>
-                </svg>
-            </div>
-            Acerca de
-        </div>
-
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M8 6h13"></path>
-                    <path d="M8 12h13"></path>
-                    <path d="M8 18h13"></path>
-                    <path d="M3 6h.01"></path>
-                    <path d="M3 12h.01"></path>
-                    <path d="M3 18h.01"></path>
-                </svg>
-            </div>
-            Términos y condiciones
-        </div>
-
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                    <path d="M16 17l5-5-5-5"></path>
-                    <path d="M21 12H9"></path>
-                </svg>
-            </div>
-            Cerrar sesión
-        </div>
-
-        <div class="menuItem" onclick="closeMenu()">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M15 18l-6-6 6-6"></path>
-                </svg>
-            </div>
-            Volver al inicio
-        </div>
-
-    </div>
-
-</div>
-
-<!-- OVERLAY -->
-
-<div id="menuOverlay" onclick="closeMenu()" style="
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.35);
-z-index:9999;
-display:none;
-"></div>
-
-<!-- DETALLE DNI -->
-
-<div id="detailModal" style="
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.55);
-backdrop-filter:blur(4px);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:999999;
-padding:20px;
-">
-
-    <div style="
-    width:100%;
-    max-width:520px;
-    background:white;
-    border-radius:28px;
-    overflow:hidden;
-    animation:showDetail .25s ease;
-    ">
-
-        <!-- TOP -->
-
-        <div style="
-        background:#322d72;
-        color:white;
-        padding:24px;
-        font-size:26px;
-        font-weight:bold;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        ">
-
-            <div>
-                Documento Digital
-            </div>
-
-            <div onclick="closeDetail()" style="
-            cursor:pointer;
-            font-size:34px;
-            ">
-                ✕
-            </div>
-
-        </div>
-
-        <!-- CONTENT -->
-
-        <div style="
-        padding:26px;
-        ">
-
-            <div style="
-            display:flex;
-            gap:22px;
-            align-items:flex-start;
-            margin-bottom:28px;
-            ">
-
-                <img 
-                    id="detailPhoto"
-                    style="
-                    width:120px;
-                    height:150px;
-                    object-fit:cover;
-                    border-radius:14px;
-                    background:#eee;
-                    "
-                >
-
-                <div style="
-                flex:1;
-                ">
-
-                    <div style="
-                    color:#777;
-                    margin-bottom:4px;
-                    ">
-                        Nombre completo
-                    </div>
-
-                    <div id="detailName" style="
-                    font-size:24px;
-                    font-weight:bold;
-                    margin-bottom:18px;
-                    ">
-                    </div>
-
-                    <div style="
-                    color:#777;
-                    margin-bottom:4px;
-                    ">
-                        DNI
-                    </div>
-
-                    <div id="detailDNI" style="
-                    font-size:22px;
-                    font-weight:bold;
-                    ">
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- INFO -->
-
-            <div class="detailRow">
-                <div class="detailLabel">
-                    Número de trámite
-                </div>
-
-                <div class="detailValue">
-                    00581294731
-                </div>
-            </div>
-
-            <div class="detailRow">
-                <div class="detailLabel">
-                    Nacionalidad
-                </div>
-
-                <div class="detailValue">
-                    Argentina
-                </div>
-            </div>
-
-            <div class="detailRow">
-                <div class="detailLabel">
-                    Fecha de nacimiento
-                </div>
-
-                <div class="detailValue" id="detailBirth">
-                </div>
-            </div>
-
-            <div class="detailRow">
-                <div class="detailLabel">
-                    Domicilio
-                </div>
-
-                <div class="detailValue">
-                    Pasaje Carabelas del Sur 1847, 
-                    Parque Chas, Ciudad Autónoma de Buenos Aires
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
 </body>
 </html>

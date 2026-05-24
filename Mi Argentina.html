@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Argentina - Proyecto</title>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#dcdcdc;
+}
+
+.screen{
+    width:100%;
+    min-height:100vh;
+    display:none;
+}
+
+.active{
+    display:block;
+}
+
+.topbar{
+    background:#322d72;
+    color:white;
+    height:96px;
+    display:flex;
+    align-items:center;
+    padding:0 28px;
+    font-size:26px;
+    font-weight:bold;
+    gap:28px;
+}
+
+.back{
+    cursor:pointer;
+    font-size:40px;
+}
+
+.page{
+    padding:20px;
+}
+
+.card{
+    background:#efefef;
+    border-radius:25px;
+    padding:28px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.pin-title{
+    font-size:30px;
+    margin-bottom:40px;
+    color:#3f3f3f;
+}
+
+.pin-input{
+    width:100%;
+    border:none;
+    border-bottom:2px solid #777;
+    background:none;
+    font-size:28px;
+    padding:12px 0;
+    outline:none;
+    margin-bottom:45px;
+}
+
+.btn{
+    width:100%;
+    background:#3d397f;
+    color:white;
+    border:none;
+    padding:24px;
+    border-radius:50px;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.forgot{
+    text-align:center;
+    margin-top:35px;
+    color:#403d80;
+    font-size:18px;
+}
+
+.doc-option{
+    background:#efefef;
+    border-radius:15px;
+    padding:24px;
+    margin-bottom:24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.doc-left{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    font-size:22px;
+    font-weight:bold;
+    color:#3c3c3c;
+}
+
+.doc-icon{
+    font-size:42px;
+    color:#3d397f;
+}
+
+.arrow{
+    font-size:42px;
+    color:#666;
+}
+
+.dni-card{
+    background:#efefef;
+    margin:18px;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.top-name{
+    padding:22px 28px 14px;
+    font-size:10px;
+    font-family:Arial, Helvetica, sans-serif;
+    letter-spacing:0.2px;
+    color:#4b4b4b;
+    font-weight:normal;
+}
+
+.dni-img{
+    width:calc(100% - 36px);
+    margin:0 18px 18px 18px;
+    border-radius:8px;
+    display:block;
+}
+
+.update{
+    text-align:center;
+    padding:18px;
+    color:#555;
+    font-weight:bold;
+}
+
+.actions{
+    display:flex;
+    border-top:1px solid #ddd;
+}
+
+.action{
+    width:50%;
+    padding:22px;
+    text-align:center;
+    cursor:pointer;
+    font-size:18px;
+    color:#444;
+}
+
+.action:hover{
+    background:#e8e8e8;
+}
+
+.qr-section{
+    border-top:1px solid #ddd;
+    padding:20px;
+}
+
+.qr-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.qr-content{
+    display:none;
+    margin-top:25px;
+    text-align:center;
+}
+
+canvas{
+    margin:auto;
+}
+
+.info{
+    margin-top:18px;
+    color:#555;
+    line-height:1.5;
+}
+
+.upload-box{
+    margin-top:20px;
+}
+
+.upload-box input{
+    margin-top:10px;
+}
+
+.notice{
+    margin-top:10px;
+    color:#666;
+    font-size:14px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+
+<div class="screen active" id="loginScreen">
+
+    <div class="topbar">
+        <div class="back">←</div>
+        Dni Digital
+    </div>
+
+    <div class="page">
+
+        <div class="card">
+
+            <div class="pin-title">
+                Ingresá tu PIN de acceso
+            </div>
+
+            <input 
+                class="pin-input"
+                placeholder="123456"
+                type="password"
+            >
+
+            <button class="btn" onclick="goDocuments()">
+                Ingresar
+            </button>
+
+            <div class="forgot">
+                Olvidé mi PIN
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- DOCUMENTOS -->
+
+<div class="screen" id="docsScreen">
+
+    <div class="topbar">
+        <div class="back" onclick="goLogin()">←</div>
+        Documentos
+    </div>
+
+    <div class="page">
+
+        <div class="doc-option" onclick="goDNI()">
+
+            <div class="doc-left">
+                Documento Nacional de Identidad (DNI)
+            </div>
+
+            <div class="arrow">⌄</div>
+
+        </div>
+
+        <div class="doc-option" onclick="goDNI()">
+
+            <div class="doc-left">
+                Licencia Nacional de Conducir
+            </div>
+
+            <div class="arrow">⌄</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- DNI -->
+
+<div class="screen" id="dniScreen">
+
+    <div class="topbar">
+        <div class="back" onclick="goDocuments()">←</div>
+        Dni Digital
+    </div>
+
+    <div class="dni-card">
+
+        <div class="top-name" id="topName">
+            DANTE DE BADTS EVANS WEISS
+        </div>
+
+        <img 
+            id="dniImage"
+            class="dni-img"
+            src="8d515ebf-c333-4f49-bd61-b208fbb76440.png"
+        >
+
+        <div class="update" id="updateText"></div>
+
+        <div class="actions">
+
+            <div class="action" onclick="toggleQR()">
+                👁 Ver detalle
+            </div>
+
+            <div class="action" onclick="toggleDNI()">
+                ✖ Desactivar DNI
+            </div>
+
+        </div>
+
+        <div class="qr-section">
+
+            <div class="qr-header" onclick="toggleQR()">
+
+                <div>
+                    ▣ Verifica código QR
+                </div>
+
+                <div id="qrArrow">
+                    ⌄
+                </div>
+
+            </div>
+
+            <div class="qr-content" id="qrContent">
+
+                <canvas id="qrCanvas"></canvas>
+
+                <div class="info" id="qrInfo"></div>
+
+                <div class="upload-box">
+
+                    <div>
+                        Cambiar imagen del DNI
+                    </div>
+
+                    <input 
+                        type="file"
+                        id="fileInput"
+                        accept="image/*"
+                    >
+
+                    <div class="notice">
+                        Solo podés subir una imagen si no existe una previamente guardada.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let data = {
+    name:"DANTE DE BADTS EVANS WEISS",
+    dni:"46.836.521",
+    birth:"08 SEPT 2007",
+    active:true,
+    customImage:null
+};
+
+function saveData(){
+    localStorage.setItem(
+        "miArgentina",
+        JSON.stringify(data)
+    );
+}
+
+function loadData(){
+
+    const saved = localStorage.getItem("miArgentina");
+
+    if(saved){
+        data = JSON.parse(saved);
+    }
+
+    render();
+}
+
+function render(){
+
+    document.getElementById("topName").innerText = data.name;
+
+    const now = new Date();
+
+    document.getElementById("updateText").innerText =
+        "Última actualización: " +
+        now.toLocaleDateString() +
+        " " +
+        now.toLocaleTimeString();
+
+    if(data.customImage){
+
+        document.getElementById("dniImage").src =
+            data.customImage;
+
+        document.getElementById("fileInput").disabled = true;
+
+    }
+
+    generateQR();
+}
+
+function generateQR(){
+
+    QRCode.toCanvas(
+        document.getElementById("qrCanvas"),
+        JSON.stringify({
+            nombre:data.name,
+            dni:data.dni,
+            nacimiento:data.birth,
+            estado:data.active
+        }),
+        {
+            width:220
+        }
+    );
+
+    document.getElementById("qrInfo").innerHTML = `
+        <b>${data.name}</b><br>
+        DNI: ${data.dni}<br>
+        Nacimiento: ${data.birth}<br><br>
+        Estado:
+        ${data.active ? "✅ Documento válido" : "❌ Documento desactivado"}
+    `;
+}
+
+function toggleQR(){
+
+    const qr = document.getElementById("qrContent");
+
+    if(qr.style.display === "block"){
+
+        qr.style.display = "none";
+        document.getElementById("qrArrow").innerText = "⌄";
+
+    }else{
+
+        qr.style.display = "block";
+        document.getElementById("qrArrow").innerText = "⌃";
+
+    }
+
+}
+
+function toggleDNI(){
+
+    data.active = !data.active;
+
+    saveData();
+    render();
+
+    alert(
+        data.active
+        ? "DNI ACTIVADO"
+        : "DNI DESACTIVADO"
+    );
+
+}
+
+function showScreen(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(s => s.classList.remove("active"));
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+}
+
+function goDocuments(){
+    showScreen("docsScreen");
+}
+
+function goLogin(){
+    showScreen("loginScreen");
+}
+
+function goDNI(){
+    showScreen("dniScreen");
+}
+
+document
+.getElementById("fileInput")
+.addEventListener("change", function(e){
+
+    if(data.customImage){
+        alert("Ya existe una imagen guardada.");
+        return;
+    }
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        data.customImage = event.target.result;
+
+        saveData();
+        render();
+
+        alert("Imagen del DNI guardada.");
+
+    }
+
+    reader.readAsDataURL(file);
+
+});
+
+loadData();
+
+</script>
+
+</body>
+</html>

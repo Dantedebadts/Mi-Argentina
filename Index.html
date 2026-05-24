@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#322d72">
-<link rel="icon" href="8d515ebf-c333-4f49-bd61-b208fbb76440.png">
+
+<link rel="icon" href="data:,">
+
 <title>Mi Argentina - Proyecto</title>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
@@ -22,6 +26,8 @@ body{
     background:#dcdcdc;
 }
 
+/* PANTALLAS */
+
 .screen{
     width:100%;
     min-height:100vh;
@@ -31,6 +37,8 @@ body{
 .active{
     display:block;
 }
+
+/* TOPBAR */
 
 .topbar{
     background:#322d72;
@@ -49,6 +57,8 @@ body{
     font-size:40px;
 }
 
+/* GENERAL */
+
 .page{
     padding:20px;
 }
@@ -59,6 +69,8 @@ body{
     padding:28px;
     box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
+
+/* LOGIN */
 
 .pin-title{
     font-size:30px;
@@ -94,7 +106,10 @@ body{
     margin-top:35px;
     color:#403d80;
     font-size:18px;
+    cursor:pointer;
 }
+
+/* DOCUMENTOS */
 
 .doc-option{
     background:#efefef;
@@ -117,15 +132,12 @@ body{
     color:#3c3c3c;
 }
 
-.doc-icon{
-    font-size:42px;
-    color:#3d397f;
-}
-
 .arrow{
     font-size:42px;
     color:#666;
 }
+
+/* DNI */
 
 .dni-card{
     background:#efefef;
@@ -136,19 +148,28 @@ body{
 }
 
 .top-name{
-    padding:22px 28px 14px;
-    font-size:10px;
-    font-family:Arial, Helvetica, sans-serif;
-    letter-spacing:0.2px;
-    color:#4b4b4b;
-    font-weight:normal;
+    padding:18px 24px 10px;
+    font-size:16px;
+    color:#4a4a4a;
+    font-weight:500;
 }
 
 .dni-img{
     width:calc(100% - 36px);
     margin:0 18px 18px 18px;
-    border-radius:8px;
+    border-radius:10px;
     display:block;
+}
+
+#emptyDNI{
+    margin:20px;
+    padding:70px 20px;
+    border:2px dashed #bbb;
+    border-radius:14px;
+    text-align:center;
+    color:#777;
+    font-size:18px;
+    background:white;
 }
 
 .update{
@@ -175,6 +196,8 @@ body{
 .action:hover{
     background:#e8e8e8;
 }
+
+/* QR */
 
 .qr-section{
     border-top:1px solid #ddd;
@@ -205,21 +228,76 @@ canvas{
     line-height:1.5;
 }
 
-.upload-box{
-    margin-top:20px;
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
 }
 
-.upload-box input{
+.modal-content{
+    width:90%;
+    max-width:500px;
+    background:white;
+    border-radius:24px;
+    padding:28px;
+}
+
+.modal-title{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:24px;
+    color:#322d72;
+}
+
+.modal-field{
+    margin-bottom:18px;
+}
+
+.modal-label{
+    margin-bottom:8px;
+    color:#555;
+}
+
+.modal-input{
+    width:100%;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:18px;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:14px;
     margin-top:10px;
 }
 
-.notice{
-    margin-top:10px;
-    color:#666;
-    font-size:14px;
+.modal-btn{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.cancel-btn{
+    background:#ddd;
+}
+
+.save-btn{
+    background:#322d72;
+    color:white;
 }
 
 </style>
+
 </head>
 <body>
 
@@ -250,7 +328,7 @@ canvas{
                 Ingresar
             </button>
 
-            <div class="forgot">
+            <div class="forgot" onclick="openModal()">
                 Olvidé mi PIN
             </div>
 
@@ -307,25 +385,29 @@ canvas{
     <div class="dni-card">
 
         <div class="top-name" id="topName">
-            DANTE DE BADTS EVANS WEISS
+            NOMBRE APELLIDO
         </div>
 
         <img 
             id="dniImage"
             class="dni-img"
-            src="8d515ebf-c333-4f49-bd61-b208fbb76440.png"
+            style="display:none"
         >
+
+        <div id="emptyDNI">
+            No hay imagen cargada
+        </div>
 
         <div class="update" id="updateText"></div>
 
         <div class="actions">
 
             <div class="action" onclick="toggleQR()">
-                👁 Ver detalle
+                Ver detalle
             </div>
 
             <div class="action" onclick="toggleDNI()">
-                ✖ Desactivar DNI
+                Desactivar DNI
             </div>
 
         </div>
@@ -335,7 +417,7 @@ canvas{
             <div class="qr-header" onclick="toggleQR()">
 
                 <div>
-                    ▣ Verifica código QR
+                    Verifica código QR
                 </div>
 
                 <div id="qrArrow">
@@ -350,25 +432,106 @@ canvas{
 
                 <div class="info" id="qrInfo"></div>
 
-                <div class="upload-box">
-
-                    <div>
-                        Cambiar imagen del DNI
-                    </div>
-
-                    <input 
-                        type="file"
-                        id="fileInput"
-                        accept="image/*"
-                    >
-
-                    <div class="notice">
-                        Solo podés subir una imagen si no existe una previamente guardada.
-                    </div>
-
-                </div>
-
             </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-title">
+            Editar Datos
+        </div>
+
+        <!-- NOMBRE -->
+
+        <div class="modal-field">
+
+            <div class="modal-label">
+                Nombre completo
+            </div>
+
+            <input 
+                id="editName"
+                class="modal-input"
+                type="text"
+            >
+
+        </div>
+
+        <!-- DNI -->
+
+        <div class="modal-field">
+
+            <div class="modal-label">
+                DNI
+            </div>
+
+            <input 
+                id="editDNI"
+                class="modal-input"
+                type="text"
+            >
+
+        </div>
+
+        <!-- NACIMIENTO -->
+
+        <div class="modal-field">
+
+            <div class="modal-label">
+                Fecha de nacimiento
+            </div>
+
+            <input 
+                id="editBirth"
+                class="modal-input"
+                type="text"
+            >
+
+        </div>
+
+        <!-- FOTO -->
+
+        <div class="modal-field">
+
+            <div class="modal-label">
+                Imagen del DNI
+            </div>
+
+            <input 
+                type="file"
+                id="modalImage"
+                accept="image/*"
+                class="modal-input"
+            >
+
+        </div>
+
+        <!-- BOTONES -->
+
+        <div class="modal-buttons">
+
+            <button 
+                class="modal-btn cancel-btn"
+                onclick="closeModal()"
+            >
+                Cancelar
+            </button>
+
+            <button 
+                class="modal-btn save-btn"
+                onclick="saveModal()"
+            >
+                Guardar
+            </button>
 
         </div>
 
@@ -378,55 +541,85 @@ canvas{
 
 <script>
 
+/* DATOS */
+
 let data = {
-    name:"DANTE DE BADTS EVANS WEISS",
-    dni:"46.836.521",
-    birth:"08 SEPT 2007",
+    name:"NOMBRE APELLIDO",
+    dni:"00.000.000",
+    birth:"01 ENE 2000",
     active:true,
     customImage:null
 };
 
+/* STORAGE */
+
 function saveData(){
+
     localStorage.setItem(
         "miArgentina",
         JSON.stringify(data)
     );
+
 }
 
 function loadData(){
 
-    const saved = localStorage.getItem("miArgentina");
+    const saved =
+        localStorage.getItem("miArgentina");
 
     if(saved){
+
         data = JSON.parse(saved);
+
     }
 
     render();
+
 }
+
+/* RENDER */
 
 function render(){
 
-    document.getElementById("topName").innerText = data.name;
+    document.getElementById("topName")
+        .innerText = data.name;
 
     const now = new Date();
 
-    document.getElementById("updateText").innerText =
+    document.getElementById("updateText")
+        .innerText =
         "Última actualización: " +
         now.toLocaleDateString() +
         " " +
         now.toLocaleTimeString();
 
+    const dniImage =
+        document.getElementById("dniImage");
+
+    const emptyDNI =
+        document.getElementById("emptyDNI");
+
     if(data.customImage){
 
-        document.getElementById("dniImage").src =
-            data.customImage;
+        dniImage.src = data.customImage;
 
-        document.getElementById("fileInput").disabled = true;
+        dniImage.style.display = "block";
+
+        emptyDNI.style.display = "none";
+
+    }else{
+
+        dniImage.style.display = "none";
+
+        emptyDNI.style.display = "block";
 
     }
 
     generateQR();
+
 }
+
+/* QR */
 
 function generateQR(){
 
@@ -443,47 +636,57 @@ function generateQR(){
         }
     );
 
-    document.getElementById("qrInfo").innerHTML = `
+    document.getElementById("qrInfo")
+        .innerHTML = `
         <b>${data.name}</b><br>
         DNI: ${data.dni}<br>
         Nacimiento: ${data.birth}<br><br>
         Estado:
-        ${data.active ? "✅ Documento válido" : "❌ Documento desactivado"}
+        ${data.active
+            ? "Documento válido"
+            : "Documento desactivado"}
     `;
+
 }
+
+/* QR */
 
 function toggleQR(){
 
-    const qr = document.getElementById("qrContent");
+    const qr =
+        document.getElementById("qrContent");
 
     if(qr.style.display === "block"){
 
         qr.style.display = "none";
-        document.getElementById("qrArrow").innerText = "⌄";
+
+        document.getElementById("qrArrow")
+            .innerText = "⌄";
 
     }else{
 
         qr.style.display = "block";
-        document.getElementById("qrArrow").innerText = "⌃";
+
+        document.getElementById("qrArrow")
+            .innerText = "⌃";
 
     }
 
 }
+
+/* ACTIVAR / DESACTIVAR */
 
 function toggleDNI(){
 
     data.active = !data.active;
 
     saveData();
+
     render();
 
-    alert(
-        data.active
-        ? "DNI ACTIVADO"
-        : "DNI DESACTIVADO"
-    );
-
 }
+
+/* PANTALLAS */
 
 function showScreen(id){
 
@@ -509,35 +712,82 @@ function goDNI(){
     showScreen("dniScreen");
 }
 
-document
-.getElementById("fileInput")
-.addEventListener("change", function(e){
+/* MODAL */
 
-    if(data.customImage){
-        alert("Ya existe una imagen guardada.");
-        return;
+function openModal(){
+
+    document.getElementById("modal")
+        .style.display = "flex";
+
+    document.getElementById("editName")
+        .value = data.name;
+
+    document.getElementById("editDNI")
+        .value = data.dni;
+
+    document.getElementById("editBirth")
+        .value = data.birth;
+
+}
+
+function closeModal(){
+
+    document.getElementById("modal")
+        .style.display = "none";
+
+}
+
+function saveModal(){
+
+    data.name =
+        document.getElementById("editName").value;
+
+    data.dni =
+        document.getElementById("editDNI").value;
+
+    data.birth =
+        document.getElementById("editBirth").value;
+
+    const imageInput =
+        document.getElementById("modalImage");
+
+    const file =
+        imageInput.files[0];
+
+    if(file){
+
+        const reader = new FileReader();
+
+        reader.onload = function(event){
+
+            data.customImage =
+                event.target.result;
+
+            finishSave();
+
+        }
+
+        reader.readAsDataURL(file);
+
+    }else{
+
+        finishSave();
+
     }
 
-    const file = e.target.files[0];
+}
 
-    if(!file) return;
+function finishSave(){
 
-    const reader = new FileReader();
+    saveData();
 
-    reader.onload = function(event){
+    render();
 
-        data.customImage = event.target.result;
+    closeModal();
 
-        saveData();
-        render();
+}
 
-        alert("Imagen del DNI guardada.");
-
-    }
-
-    reader.readAsDataURL(file);
-
-});
+/* INICIAR */
 
 loadData();
 

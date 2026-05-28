@@ -81,6 +81,11 @@ body{
     color:#3f3f3f;
 }
 
+.pin-container{
+    margin-bottom:45px;
+    position:relative;
+}
+
 .pin-input{
     width:100%;
     border:none;
@@ -89,7 +94,18 @@ body{
     font-size:28px;
     padding:12px 0;
     outline:none;
-    margin-bottom:45px;
+    transition: border-color 0.2s;
+}
+
+.pin-input.error{
+    border-bottom:2px solid #d32f2f;
+}
+
+.pin-error-text{
+    color:#d32f2f;
+    font-size:14px;
+    margin-top:5px;
+    display:none;
 }
 
 .btn{
@@ -110,6 +126,31 @@ body{
     color:#403d80;
     font-size:18px;
     cursor:pointer;
+}
+
+/* PANTALLA DE CARGA */
+#loadingScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #322d72;
+    color: white;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255,255,255,0.2);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* DOCUMENTOS */
@@ -192,10 +233,19 @@ body{
     cursor:pointer;
     font-size:18px;
     color:#444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
 }
 
 .action:hover{
     background:#e8e8e8;
+}
+
+.action-icon {
+    width: 20px;
+    height: 20px;
 }
 
 /* QR */
@@ -384,16 +434,27 @@ canvas{
 </head>
 <body>
 
+<div class="screen" id="loadingScreen">
+    <div class="spinner"></div>
+    <div style="font-size: 24px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 10px;">
+        mi<span style="font-weight:bold;">Argentina</span>
+    </div>
+    <div style="font-size: 16px; opacity: 0.8;">Cargando mi información...</div>
+</div>
+
 <div class="screen" id="loginScreen">
     <div class="topbar">
-        <div class="back" onclick="showScreen('homeScreen')">←</div>
+        <div class="back" onclick="showScreenWithLag('homeScreen')">←</div>
         Dni Digital
     </div>
     <div class="page">
         <div class="card">
             <div class="pin-title">Ingresá tu PIN de acceso</div>
-            <input class="pin-input" placeholder="123456" type="password">
-            <button class="btn" onclick="goDNI()">Ingresar</button>
+            <div class="pin-container">
+                <input id="loginPinField" class="pin-input" placeholder="123456" type="password" oninput="clearPinError()">
+                <div id="pinErrorText" class="pin-error-text">Ingresá un código válido</div>
+            </div>
+            <button class="btn" onclick="validateAndGoDNI()">Ingresar</button>
             <div class="forgot" onclick="openModal()">Olvidé mi PIN</div>
         </div>
     </div>
@@ -416,8 +477,8 @@ canvas{
         
         <div style="background: #e2e2e8; border-radius: 20px; padding: 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
             <div style="display: flex; align-items: center; gap: 16px;">
-                <div style="width: 48px; height: 48px; color: #322d72;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                <div style="width: 48px; height: 48px; color: #322d72; display: flex; align-items: center;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
                 </div>
                 <div style="font-size: 17px; color: #222; font-weight: 500;">No tenés turnos programados.</div>
             </div>
@@ -442,56 +503,56 @@ canvas{
 
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
             
-            <div class="grid-item" onclick="goDocuments()">
+            <div class="grid-item" onclick="showScreenWithLag('docsScreen')">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="19" y2="13"></line><line x1="5" y1="15" x2="13" y2="15"></line></svg>
                 </div>
                 <div class="grid-text">Documentos</div>
             </div>
 
-            <div class="grid-item" style="opacity: 0.85;">
+            <div class="grid-item">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1 .4-1 1v4H2c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
                 </div>
                 <div class="grid-text">Vehículos</div>
             </div>
 
-            <div class="grid-item" style="opacity: 0.85;">
+            <div class="grid-item">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </div>
                 <div class="grid-text">Salud</div>
             </div>
 
-            <div class="grid-item" style="opacity: 0.85;">
+            <div class="grid-item">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                 </div>
                 <div class="grid-text">Trabajo</div>
             </div>
 
-            <div class="grid-item" style="opacity: 0.85;">
+            <div class="grid-item">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line><path d="M10 9h3a2 2 0 0 1 0 4h-4a2 2 0 0 0 0 4h5"></path></svg>
                 </div>
                 <div class="grid-text">Cobros</div>
             </div>
 
-            <div class="grid-item" style="opacity: 0.85;">
+            <div class="grid-item">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </div>
                 <div class="grid-text">Trámites</div>
             </div>
 
-            <div class="grid-item" style="opacity: 0.85;">
+            <div class="grid-item">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                 </div>
                 <div class="grid-text">Turnos</div>
             </div>
 
-            <div class="grid-item" style="opacity: 0.85;">
+            <div class="grid-item">
                 <div class="grid-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
@@ -523,7 +584,7 @@ canvas{
     </div>
 
     <div style="margin-top: 50px; background:#f5f5f5; display:flex; justify-content:space-around; padding:16px 0; border-top:1px solid #ccc; width:100%;">
-        <div style="text-align:center; color:#322d72; font-weight:bold; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;" onclick="showScreen('homeScreen')">
+        <div style="text-align:center; color:#322d72; font-weight:bold; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;" onclick="showScreenWithLag('homeScreen')">
             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
             Inicio
         </div>
@@ -540,15 +601,15 @@ canvas{
 
 <div class="screen" id="docsScreen">
     <div class="topbar">
-        <div class="back" onclick="showScreen('homeScreen')">←</div>
+        <div class="back" onclick="showScreenWithLag('homeScreen')">←</div>
         Documentos
     </div>
     <div class="page">
-        <div class="doc-option" onclick="showScreen('loginScreen')">
+        <div class="doc-option" onclick="showScreenWithLag('loginScreen')">
             <div class="doc-left">Documento Nacional de Identidad (DNI)</div>
             <div class="arrow">⌄</div>
         </div>
-        <div class="doc-option" onclick="showScreen('loginScreen')">
+        <div class="doc-option" onclick="showScreenWithLag('loginScreen')">
             <div class="doc-left">Licencia Nacional de Conducir</div>
             <div class="arrow">⌄</div>
         </div>
@@ -557,7 +618,7 @@ canvas{
 
 <div class="screen" id="dniScreen">
     <div class="topbar">
-        <div class="back" onclick="goDocuments()">←</div>
+        <div class="back" onclick="showScreenWithLag('docsScreen')">←</div>
         Dni Digital
     </div>
     <div class="dni-card">
@@ -565,10 +626,18 @@ canvas{
         <img id="dniImage" class="dni-img" style="display:none">
         <div id="emptyDNI">No hay imagen cargada</div>
         <div class="update" id="updateText"></div>
+        
         <div class="actions">
-            <div class="action" onclick="openDetail()">Ver detalle</div>
-            <div class="action" onclick="toggleDNI()">Desactivar DNI</div>
+            <div class="action" onclick="openDetail()">
+                <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                Ver detalle
+            </div>
+            <div class="action" onclick="toggleDNI()">
+                <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Desactivar DNI
+            </div>
         </div>
+
         <div class="qr-section">
             <div class="qr-header" onclick="toggleQR()">
                 <div>Verifica código QR</div>
@@ -609,7 +678,6 @@ canvas{
 </div>
 
 <div id="sideMenu" style="position:fixed; top:0; left:-100%; width:85%; max-width:420px; height:100%; background:#e0e0e0; z-index:99999; transition:.35s; overflow-y:auto; box-shadow:10px 0 30px rgba(0,0,0,.25);">
-    
     <div style="background:#322d72; padding:30px 20px 24px 20px; color:white; position:relative;">
         <div onclick="closeMenu()" style="position:absolute; left:20px; top:20px; font-size:30px; cursor:pointer;">
             ←
@@ -621,7 +689,6 @@ canvas{
         <div style="display:flex; align-items:center; gap:16px; margin-top:50px;">
             <div style="width:70px; height:70px; border-radius:50%; overflow:hidden; flex-shrink:0; position:relative; display:flex; align-items:center; justify-content:center; background:#777;">
                 <svg viewBox="0 0 24 24" fill="currentColor" style="width:75%; height:75%; color:white; opacity:0.95;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z"></path></svg>
-                
                 <div style="position:absolute; bottom:0; left:0; width:22px; height:22px; background:#4caf50; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #322d72;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" style="width:12px; height:12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
@@ -635,61 +702,52 @@ canvas{
     </div>
 
     <div style="background:#ebebeb;">
-        
         <div class="menuItem">
             <div class="menuIcon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
             Mi perfil
         </div>
-
         <div class="menuItem">
             <div class="menuIcon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             </div>
             Hijos/as asociados
         </div>
-
         <div class="menuItem">
             <div class="menuIcon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
             </div>
             Suscribir servicios
         </div>
-
         <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
             <div class="menuIcon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             </div>
             Seguridad y privacidad
         </div>
-
         <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
             <div class="menuIcon" style="font-weight: bold; font-size: 14px;">mi</div>
             Acerca de
         </div>
-
         <div class="menuItem">
             <div class="menuIcon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
             </div>
             Términos y condiciones
         </div>
-
         <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
             <div class="menuIcon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
             </div>
             Cerrar sesión
         </div>
-
         <div class="menuItem" onclick="closeMenu()">
             <div class="menuIcon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
             Volver al inicio
         </div>
-
     </div>
 </div>
 
@@ -736,7 +794,7 @@ canvas{
 let data = {
     name:"DANTE DE BADTS EVANS WEISS",
     dni:"46.836.521",
-    birth:"01 ENE 2005",
+    birth:"2005-01-01",
     active:true,
     customImage:null
 };
@@ -762,7 +820,13 @@ function openDetail(){
     document.getElementById("detailModal").style.display = "flex";
     document.getElementById("detailName").innerText = data.name;
     document.getElementById("detailDNI").innerText = data.dni;
-    document.getElementById("detailBirth").innerText = data.birth;
+    
+    let parts = data.birth.split("-");
+    if(parts.length === 3) {
+        document.getElementById("detailBirth").innerText = parts[2] + "/" + parts[1] + "/" + parts[0];
+    } else {
+        document.getElementById("detailBirth").innerText = data.birth;
+    }
 
     let detailPhoto = document.getElementById("detailPhoto");
     if(data.customImage){
@@ -804,7 +868,6 @@ function render(){
         emptyDNI.style.display = "block";
     }
 
-    /* MENU DATA */
     document.getElementById("menuName").innerText = data.name;
     
     let cleanDNI = data.dni.replace(/\./g, "");
@@ -847,15 +910,44 @@ function toggleDNI(){
     render();
 }
 
-/* PANTALLAS */
+/* PANTALLAS CON LAG SIMULADO */
 function showScreen(id){
     document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 }
 
-function goDocuments(){ showScreen("docsScreen"); }
-function goLogin(){ showScreen("docsScreen"); }
-function goDNI(){ showScreen("dniScreen"); }
+function showScreenWithLag(id){
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById("loadingScreen").classList.add("active");
+    
+    setTimeout(function(){
+        document.getElementById("loadingScreen").classList.remove("active");
+        document.getElementById(id).classList.add("active");
+    }, 1500);
+}
+
+/* VALIDACIÓN DE PIN */
+function validateAndGoDNI(){
+    let pinField = document.getElementById("loginPinField");
+    let errorText = document.getElementById("pinErrorText");
+    let value = pinField.value.trim();
+    
+    if(value === ""){
+        pinField.classList.add("error");
+        errorText.style.display = "block";
+    } else {
+        pinField.classList.remove("error");
+        errorText.style.display = "none";
+        showScreenWithLag("dniScreen");
+    }
+}
+
+function clearPinError(){
+    let pinField = document.getElementById("loginPinField");
+    let errorText = document.getElementById("pinErrorText");
+    pinField.classList.remove("error");
+    errorText.style.display = "none";
+}
 
 /* FORMATO DNI */
 function formatDNI(input){
@@ -875,12 +967,6 @@ function openModal(){
     document.getElementById("editName").value = data.name;
     document.getElementById("editDNI").value = data.dni;
     document.getElementById("editBirth").value = data.birth;
-}
-
-let inputDate = document.getElementById("editBirth");
-if (inputDate) {
-    inputDate.type = "date";
-    inputDate.placeholder = "01 ENE 2005";
 }
 
 function closeModal(){

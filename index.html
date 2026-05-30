@@ -23,7 +23,7 @@ body{
     position:relative;
 }
 
-/* PANTALLAS */
+/* PANTALLAS CON TUS ANIMACIONES ORIGINALES */
 .screen{
     width:100%;
     min-height:100vh;
@@ -48,53 +48,56 @@ body{
 .topbar{
     background:#322d72;
     color:white;
-    height:96px;
+    height:70px;
     display:flex;
     align-items:center;
-    padding:0 28px;
-    font-size:26px;
-    font-weight:bold;
-    gap:28px;
+    padding:0 20px;
+    font-size:22px;
+    font-weight:500;
+    gap:20px;
 }
 
 .back{
     cursor:pointer;
-    font-size:40px;
+    font-size:32px;
 }
 
-/* GENERAL */
+/* GENERAL - Agregado padding inferior para no tapar contenido */
 .page{
-    padding:20px;
+    padding:16px;
+    padding-bottom: 90px;
 }
 
 .card{
-    background:#efefef;
-    border-radius:25px;
-    padding:28px;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    background:white;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* LOGIN */
 .pin-title{
-    font-size:30px;
-    margin-bottom:40px;
-    color:#3f3f3f;
+    font-size:24px;
+    margin-bottom:30px;
+    color:#333;
+    font-weight: bold;
 }
 
 .pin-container{
-    margin-bottom:45px;
+    margin-bottom:35px;
     position:relative;
 }
 
 .pin-input{
     width:100%;
     border:none;
-    border-bottom:2px solid #777;
+    border-bottom:2px solid #999;
     background:none;
-    font-size:28px;
-    padding:12px 0;
+    font-size:24px;
+    padding:8px 0;
     outline:none;
-    transition: border-color 0.2s;
+    text-align: center;
+    letter-spacing: 4px;
 }
 
 .pin-input.error{
@@ -106,25 +109,26 @@ body{
     font-size:14px;
     margin-top:5px;
     display:none;
+    text-align: center;
 }
 
 .btn{
     width:100%;
-    background:#3d397f;
+    background:#322d72;
     color:white;
     border:none;
-    padding:24px;
+    padding:16px;
     border-radius:50px;
-    font-size:22px;
+    font-size:18px;
     font-weight:bold;
     cursor:pointer;
 }
 
 .forgot{
     text-align:center;
-    margin-top:35px;
-    color:#403d80;
-    font-size:18px;
+    margin-top:25px;
+    color:#322d72;
+    font-size:16px;
     cursor:pointer;
 }
 
@@ -139,12 +143,12 @@ body{
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(255,255,255,0.2);
-    border-top: 5px solid white;
+    width: 44px;
+    height: 44px;
+    border: 4px solid rgba(255,255,255,0.2);
+    border-top: 4px solid white;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
     margin-bottom: 20px;
 }
 
@@ -155,116 +159,119 @@ body{
 
 /* DOCUMENTOS */
 .doc-option{
-    background:#efefef;
-    border-radius:15px;
-    padding:24px;
-    margin-bottom:24px;
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:16px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     cursor:pointer;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
+    box-shadow:0 2px 8px rgba(0,0,0,0.03);
 }
 
 .doc-left{
     display:flex;
     align-items:center;
-    gap:22px;
-    font-size:22px;
+    gap:16px;
+    font-size:16px;
     font-weight:bold;
-    color:#3c3c3c;
+    color:#333;
 }
 
 .arrow{
-    font-size:42px;
-    color:#666;
+    font-size:24px;
+    color:#322d72;
+    font-weight: bold;
 }
 
-/* DNI */
+/* DNI CARD - Agregado padding inferior para no tapar con el footer */
 .dni-card{
-    background:#efefef;
-    margin:18px;
-    border-radius:28px;
+    background:white;
+    margin:12px;
+    border-radius:16px;
     overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
+    box-shadow:0 4px 15px rgba(0,0,0,0.06);
+    margin-bottom: 95px;
 }
 
 .top-name{
-    padding:18px 24px 10px;
-    font-size: 100%;
-    color:#4a4a4a;
+    padding:16px 20px 8px;
+    font-size: 20px;
+    color:#222;
     font-weight:bold;
 }
 
 .dni-img{
-    width:calc(100% - 36px);
-    margin:0 18px 18px 18px;
-    border-radius:10px;
+    width:calc(100% - 32px);
+    margin:0 16px 16px 16px;
+    border-radius:12px;
     display:block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 #emptyDNI{
-    margin:20px;
-    padding:70px 20px;
+    margin:16px;
+    padding:60px 20px;
     border:2px dashed #bbb;
-    border-radius:14px;
+    border-radius:12px;
     text-align:center;
     color:#777;
-    font-size:18px;
-    background:white;
+    font-size:16px;
+    background:#fafafa;
 }
 
 .update{
     text-align:center;
-    padding:18px;
+    padding:14px;
     color:#555;
-    font-weight:bold;
+    font-size: 14px;
+    background: #f9f9f9;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 
 .actions{
     display:flex;
-    border-top:1px solid #ddd;
 }
 
 .action{
     width:50%;
-    padding:22px;
+    padding:16px;
     text-align:center;
     cursor:pointer;
-    font-size:18px;
-    color:#444;
+    font-size:16px;
+    color:#322d72;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     gap:8px;
 }
 
-.action:hover{
-    background:#e8e8e8;
-}
-
-.action-icon {
-    width: 20px;
-    height: 20px;
+.action:first-child {
+    border-right: 1px solid #eee;
 }
 
 /* QR */
 .qr-section{
-    border-top:1px solid #ddd;
-    padding:20px;
+    border-top:1px solid #eee;
+    padding:16px;
 }
 
 .qr-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-size:20px;
+    font-size:17px;
+    color: #322d72;
+    font-weight: bold;
     cursor:pointer;
 }
 
 .qr-content{
     display:none;
-    margin-top:25px;
+    margin-top:20px;
     text-align:center;
 }
 
@@ -273,16 +280,17 @@ canvas{
 }
 
 .info{
-    margin-top:18px;
-    color:#555;
-    line-height:1.5;
+    margin-top:14px;
+    color:#444;
+    font-size: 15px;
+    line-height:1.4;
 }
 
-/* MODAL */
+/* MODAL CONFIGURACIÓN */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.55);
+    background:rgba(0,0,0,.6);
     display:none;
     justify-content:center;
     align-items:center;
@@ -290,54 +298,58 @@ canvas{
 }
 
 .modal-content{
-    width:90%;
-    max-width:500px;
+    width:92%;
+    max-width:400px;
     background:white;
-    border-radius:24px;
-    padding:28px;
+    border-radius:20px;
+    padding:24px;
 }
 
 .modal-title{
-    font-size:28px;
+    font-size:22px;
     font-weight:bold;
-    margin-bottom:24px;
+    margin-bottom:20px;
     color:#322d72;
 }
 
 .modal-field{
-    margin-bottom:18px;
+    margin-bottom:16px;
 }
 
 .modal-label{
-    margin-bottom:8px;
+    margin-bottom:6px;
     color:#555;
+    font-size: 14px;
 }
 
 .modal-input{
     width:100%;
-    padding:16px;
-    border-radius:12px;
+    padding:12px;
+    border-radius:8px;
     border:1px solid #ccc;
-    font-size:18px;
+    font-size:16px;
+    outline: none;
 }
 
 .modal-buttons{
     display:flex;
-    gap:14px;
-    margin-top:10px;
+    gap:12px;
+    margin-top:20px;
 }
 
 .modal-btn{
     flex:1;
-    padding:16px;
+    padding:14px;
     border:none;
-    border-radius:14px;
-    font-size:17px;
+    border-radius:50px;
+    font-size:16px;
+    font-weight: bold;
     cursor:pointer;
 }
 
 .cancel-btn{
-    background:#ddd;
+    background:#eee;
+    color: #555;
 }
 
 .save-btn{
@@ -349,85 +361,113 @@ canvas{
 .menuItem{
     display:flex;
     align-items:center;
-    gap:24px;
-    padding:20px 24px;
-    border-bottom:1px solid #e2e2e2;
-    font-size:18px;
+    gap:20px;
+    padding:16px 20px;
+    border-bottom:1px solid #eee;
+    font-size:16px;
     color:#333;
     cursor:pointer;
     background:white;
 }
 
-.menuItem:hover{
-    background:#f5f5f5;
-}
-
-.menuIcon{
-    width:24px;
-    height:24px;
-    color:#757575;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-}
-
-.menuIcon svg{
-    width:100%;
-    height:100%;
-}
-
-.detailRow{
-    margin-bottom:22px;
-}
-
-.detailLabel{
-    color:#7a7a7a;
-    font-size:15px;
-    margin-bottom:6px;
-}
-
-.detailValue{
-    font-size:20px;
-    color:#222;
-    line-height:1.4;
-}
-
-/* BOTONES DE LA GRILLA PRINCIPAL */
-.grid-item {
+/* DISEÑO DE LA VISTA DETALLE COMPLETO - Agregado padding inferior */
+.detailContainer {
     background: white;
-    border-radius: 16px;
-    padding: 22px 10px;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    min-height: 100vh;
+    padding-bottom: 95px;
+}
+
+.detail-photo-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 24px 0 16px 0;
+    background: white;
 }
 
-.grid-icon {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 12px;
-    color: #322d72;
+.detail-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e0e0e0;
 }
 
-.grid-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.grid-text {
-    font-size: 15px;
+.detail-name-title {
+    margin-top: 12px;
+    font-size: 20px;
     font-weight: bold;
-    color: #111;
+    color: #111111;
+    text-align: center;
 }
 
-@keyframes showDetail{
-    from{ opacity:0; transform:scale(.95); }
-    to{ opacity:1; transform:scale(1); }
+.detail-info-grid {
+    background: white;
+    padding: 16px 24px 24px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    border-bottom: 8px solid #ebebeb;
+}
+
+.detail-list-block {
+    background: white;
+    padding: 24px;
+}
+
+.detailRow {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 8px;
+}
+
+.detailLabel {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.detailValue {
+    font-size: 17px;
+    color: #111;
+    font-weight: bold;
+}
+
+/* BARRA DE NAVEGACIÓN INFERIOR (FOOTER FIJO MOVIL) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    border-top: 1px solid #e0e0e0;
+    z-index: 999; /* Se mantiene arriba flotando limpiamente */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-item {
+    text-align: center;
+    color: #757575;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    width: 25%;
+}
+
+.nav-item.active-nav {
+    color: #322d72;
+    font-weight: bold;
+}
+
+.nav-svg {
+    width: 24px;
+    height: 24px;
 }
 </style>
 
@@ -436,22 +476,22 @@ canvas{
 
 <div class="screen" id="loadingScreen">
     <div class="spinner"></div>
-    <div style="font-size: 24px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 10px;">
+    <div style="font-size: 24px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 6px;">
         mi<span style="font-weight:bold;">Argentina</span>
     </div>
-    <div style="font-size: 16px; opacity: 0.8;">Cargando mi información...</div>
+    <div style="font-size: 15px; opacity: 0.8;">Cargando mi información...</div>
 </div>
 
 <div class="screen" id="loginScreen">
     <div class="topbar">
-        <div class="back" onclick="showScreenWithLag('homeScreen')">←</div>
+        <div class="back" onclick="showScreenWithLag('docsScreen')">←</div>
         Dni Digital
     </div>
     <div class="page">
         <div class="card">
             <div class="pin-title">Ingresá tu PIN de acceso</div>
             <div class="pin-container">
-                <input id="loginPinField" class="pin-input" placeholder="123456" type="password" oninput="clearPinError()">
+                <input id="loginPinField" class="pin-input" placeholder="••••••" type="password" maxlength="6" inputmode="numeric" oninput="clearPinError()">
                 <div id="pinErrorText" class="pin-error-text">Ingresá un código válido</div>
             </div>
             <button class="btn" onclick="validateAndGoDNI()">Ingresar</button>
@@ -461,141 +501,97 @@ canvas{
 </div>
 
 <div class="screen active" id="homeScreen">
-    <div style="background:#322d72; height:150px; color:white; padding:24px; position:relative;">
-        <div onclick="openMenu()" style="font-size:32px; position:absolute; left:24px; top:20px; cursor:pointer;">
+    <div style="background:#322d72; height:130px; color:white; padding:20px; position:relative;">
+        <div onclick="openMenu()" style="font-size:28px; position:absolute; left:20px; top:18px; cursor:pointer;">
             ☰
         </div>
-        <div style="position:absolute; right:24px; top:20px; font-size:28px; font-weight:500; letter-spacing: 0.5px;">
+        <div style="position:absolute; right:20px; top:20px; font-size:24px; font-weight:500; letter-spacing: 0.5px;">
             mi<span style="font-weight:bold;">Argentina</span>
         </div>
-        <div id="welcomeText" style="text-align:center; margin-top:54px; font-size:24px; font-weight:bold;">
-            ¡Hola, NOMBRE APELLIDO!
+        <div id="welcomeText" style="text-align:left; margin-top:60px; font-size:22px; font-weight:bold;">
+            ¡Hola, Ben!
         </div>
     </div>
 
-    <div style="padding: 16px; margin-top: -20px; display: flex; flex-direction: column; gap: 16px;">
+    <div class="page" style="margin-top: -15px; display: flex; flex-direction: column; gap: 14px;">
         
-        <div style="background: #e2e2e8; border-radius: 20px; padding: 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <div style="width: 48px; height: 48px; color: #322d72; display: flex; align-items: center;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+        <div style="background: white; border-radius: 16px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid #eaeaea;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 40px; height: 40px; color: #322d72; display: flex; align-items: center;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                 </div>
-                <div style="font-size: 17px; color: #222; font-weight: 500;">No tenés turnos programados.</div>
+                <div style="font-size: 15px; color: #333; font-weight: 500;">No tenés turnos programados.</div>
             </div>
-            <button style="background: #322d72; color: white; border: none; padding: 10px 18px; border-radius: 20px; font-size: 15px; font-weight: bold; cursor: pointer;">Solicitalo acá</button>
+            <button style="background: #322d72; color: white; border: none; padding: 8px 14px; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer;">Sacá turno</button>
         </div>
 
-        <div style="background: #cbdcd5; border-radius: 20px; padding: 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <div style="font-size: 18px; color: #222; font-weight: 500; flex: 1; padding-right: 10px;">
+        <div style="background: #e8f5e9; border-radius: 16px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid #c8e6c9;">
+            <div style="font-size: 16px; color: #1b5e20; font-weight: bold; flex: 1; padding-right: 10px;">
                 ¡Todas tus credenciales están al día!
             </div>
-            <div style="width: 100px; height: 70px; position: relative;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5" style="width: 100%; height: 100%;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><circle cx="7" cy="10" r="2"></circle><line x1="13" y1="9" x2="19" y2="9"></line><line x1="13" y1="13" x2="19" y2="13"></line><line x1="5" y1="15" x2="9" y2="15"></line></svg>
-                <div style="position: absolute; top: -10px; right: -5px; width: 32px; height: 32px; background: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #cbdcd5;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" style="width: 16px; height: 16px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div style="width: 60px; height: 44px; position: relative;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="1.5" style="width: 100%; height: 100%;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><circle cx="7" cy="10" r="2"></circle><line x1="13" y1="9" x2="19" y2="9"></line><line x1="13" y1="13" x2="19" y2="13"></line></svg>
+                <div style="position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; background: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
             </div>
         </div>
 
-        <div style="font-size: 20px; font-weight: bold; color: #333; margin-top: 8px; margin-bottom: -4px;">
+        <div style="font-size: 18px; font-weight: bold; color: #222; margin-top: 6px; margin-bottom: 2px;">
             ¿Qué necesitás hoy?
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
-            
-            <div class="grid-item" onclick="showScreenWithLag('docsScreen')">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="19" y2="13"></line><line x1="5" y1="15" x2="13" y2="15"></line></svg>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div onclick="showScreenWithLag('docsScreen')" style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="3"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="19" y2="13"></line></svg>
                 </div>
-                <div class="grid-text">Documentos</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Documentos</div>
             </div>
-
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1 .4-1 1v4H2c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1 .4-1 1v4H2c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
                 </div>
-                <div class="grid-text">Vehículos</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Vehículos</div>
             </div>
-
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                 </div>
-                <div class="grid-text">Salud</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Trabajo</div>
             </div>
-
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </div>
-                <div class="grid-text">Trabajo</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Salud</div>
             </div>
-
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line><path d="M10 9h3a2 2 0 0 1 0 4h-4a2 2 0 0 0 0 4h5"></path></svg>
+            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line></svg>
                 </div>
-                <div class="grid-text">Cobros</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Cobros</div>
             </div>
-
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
                 </div>
-                <div class="grid-text">Trámites</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Trámites</div>
             </div>
-
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect></svg>
                 </div>
-                <div class="grid-text">Turnos</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Turnos</div>
             </div>
-
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
                 </div>
-                <div class="grid-text">Hijos</div>
-            </div>
-
-        </div>
-
-        <div style="background: #cfc6c6; border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;" onclick="openModal()">
-            <div style="width: 50px; height: 50px; background: #b0a7a7; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width: 26px; height: 26px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            <div>
-                <div style="font-size: 17px; font-weight: bold; color: #222;">Completá tu perfil</div>
-                <div style="font-size: 14px; color: #555;">Mantené todos tus datos actualizados</div>
+                <div style="font-size:16px; color:#333; font-weight:500;">Hijos</div>
             </div>
         </div>
 
-        <div style="background: #c3cbd6; border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;">
-            <div style="width: 50px; height: 50px; background: #a2abb8; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width: 26px; height: 26px;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-            </div>
-            <div>
-                <div style="font-size: 17px; font-weight: bold; color: #222;">Suscribí servicios</div>
-                <div style="font-size: 14px; color: #555;">Elegí los servicios que querés ver en la aplicación</div>
-            </div>
-        </div>
-
-    </div>
-
-    <div style="margin-top: 50px; background:#f5f5f5; display:flex; justify-content:space-around; padding:16px 0; border-top:1px solid #ccc; width:100%;">
-        <div style="text-align:center; color:#322d72; font-weight:bold; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;" onclick="showScreenWithLag('homeScreen')">
-            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
-            Inicio
-        </div>
-        <div style="text-align:center; opacity:.5; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-            Novedades
-        </div>
-        <div style="text-align:center; opacity:.5; font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Teléfonos
-        </div>
     </div>
 </div>
 
@@ -607,11 +603,11 @@ canvas{
     <div class="page">
         <div class="doc-option" onclick="showScreenWithLag('loginScreen')">
             <div class="doc-left">Documento Nacional de Identidad (DNI)</div>
-            <div class="arrow">⌄</div>
+            <div class="arrow">›</div>
         </div>
-        <div class="doc-option" onclick="showScreenWithLag('loginScreen')">
+        <div class="doc-option">
             <div class="doc-left">Licencia Nacional de Conducir</div>
-            <div class="arrow">⌄</div>
+            <div class="arrow">›</div>
         </div>
     </div>
 </div>
@@ -622,26 +618,30 @@ canvas{
         Dni Digital
     </div>
     <div class="dni-card">
-        <div class="top-name" id="topName">NOMBRE APELLIDO</div>
+        <div class="top-name" id="topName">BEN ASTBURY</div>
         <img id="dniImage" class="dni-img" style="display:none">
         <div id="emptyDNI">No hay imagen cargada</div>
-        <div class="update" id="updateText"></div>
+        
+        <div class="update" id="updateText">Última actualización: 28/05/2026 16:49 hs</div>
         
         <div class="actions">
             <div class="action" onclick="openDetail()">
-                <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                 Ver detalle
             </div>
             <div class="action" onclick="toggleDNI()">
-                <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:2px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 Desactivar DNI
             </div>
         </div>
 
         <div class="qr-section">
             <div class="qr-header" onclick="toggleQR()">
-                <div>Verifica código QR</div>
-                <div id="qrArrow">⌄</div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="3" height="3"></rect></svg>
+                    Verifica código QR
+                </div>
+                <div id="qrArrow">▼</div>
             </div>
             <div class="qr-content" id="qrContent">
                 <canvas id="qrCanvas"></canvas>
@@ -651,24 +651,88 @@ canvas{
     </div>
 </div>
 
+<div class="screen" id="detailScreen">
+    <div class="topbar">
+        <div class="back" onclick="showScreenWithLag('dniScreen')">←</div>
+        Dni Digital
+    </div>
+    
+    <div class="detailContainer">
+        <div class="detail-photo-block">
+            <img id="detailAvatarImage" class="detail-avatar" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+            <div class="detail-name-title" id="detailFullNameTitle">BEN ASTBURY</div>
+        </div>
+
+        <div class="detail-info-grid">
+            <div>
+                <div class="detailLabel">DNI</div>
+                <div class="detailValue" id="detDNI">50.676.407</div>
+            </div>
+            <div>
+                <div class="detailLabel">Número de trámite</div>
+                <div class="detailValue">744057658</div>
+            </div>
+            <div>
+                <div class="detailLabel">Fecha de emisión</div>
+                <div class="detailValue">15/12/2025</div>
+            </div>
+            <div>
+                <div class="detailLabel">Fecha de vencimiento</div>
+                <div class="detailValue">15/12/2040</div>
+            </div>
+        </div>
+
+        <div class="detail-list-block">
+            <div class="detailRow">
+                <div class="detailLabel">Apellido / Surname</div>
+                <div class="detailValue" id="detailSurnameVal">ASTBURY</div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Nombre / Name</div>
+                <div class="detailValue" id="detailNameVal">BEN</div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Sexo / Sex</div>
+                <div class="detailValue">M</div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Fecha de nacimiento / Date of birth</div>
+                <div class="detailValue" id="detailBirth">27 SEPT / SEP 2010</div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Nacionalidad / Nationality</div>
+                <div class="detailValue">ARGENTINA</div>
+            </div>
+            <div class="detailRow">
+                <div class="detailLabel">Dirección / Address</div>
+                <div class="detailValue" style="font-size: 15px;">Cdad de la paz 964. Belgrano. CABA</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal" id="modal">
     <div class="modal-content">
-        <div class="modal-title">Editar Datos</div>
+        <div class="modal-title">Editar Datos Simulados</div>
         <div class="modal-field">
             <div class="modal-label">Nombre completo</div>
-            <input id="editName" class="modal-input" type="text" placeholder="NOMBRE APELLIDO" style="text-transform:uppercase" oninput="this.value = this.value.toUpperCase()">
+            <input id="editName" class="modal-input" type="text" placeholder="BEN ASTBURY" style="text-transform:uppercase" oninput="this.value = this.value.toUpperCase()">
         </div>
         <div class="modal-field">
             <div class="modal-label">DNI</div>
-            <input id="editDNI" class="modal-input" type="text" placeholder="00.000.000" maxlength="10" inputmode="numeric" oninput="formatDNI(this)">
+            <input id="editDNI" class="modal-input" type="text" placeholder="50.676.407" maxlength="10" inputmode="numeric" oninput="formatDNI(this)">
         </div>
         <div class="modal-field">
             <div class="modal-label">Fecha de nacimiento</div>
             <input id="editBirth" class="modal-input" type="date">
         </div>
         <div class="modal-field">
-            <div class="modal-label">Imagen del DNI</div>
+            <div class="modal-label">Foto del DNI (Captura)</div>
             <input type="file" id="modalImage" accept="image/*" class="modal-input">
+        </div>
+        <div class="modal-field">
+            <div class="modal-label">Foto del Rostro (Detalle)</div>
+            <input type="file" id="modalFaceImage" accept="image/*" class="modal-input">
         </div>
         <div class="modal-buttons">
             <button class="modal-btn cancel-btn" onclick="closeModal()">Cancelar</button>
@@ -677,134 +741,54 @@ canvas{
     </div>
 </div>
 
-<div id="sideMenu" style="position:fixed; top:0; left:-100%; width:85%; max-width:420px; height:100%; background:#e0e0e0; z-index:99999; transition:.35s; overflow-y:auto; box-shadow:10px 0 30px rgba(0,0,0,.25);">
-    <div style="background:#322d72; padding:30px 20px 24px 20px; color:white; position:relative;">
-        <div onclick="closeMenu()" style="position:absolute; left:20px; top:20px; font-size:30px; cursor:pointer;">
-            ←
-        </div>
-        <div style="position:absolute; left:70px; top:22px; font-size:26px; font-weight:500;">
-            mi<span style="font-weight:bold;">Argentina</span>
-        </div>
-
-        <div style="display:flex; align-items:center; gap:16px; margin-top:50px;">
-            <div style="width:70px; height:70px; border-radius:50%; overflow:hidden; flex-shrink:0; position:relative; display:flex; align-items:center; justify-content:center; background:#777;">
-                <svg viewBox="0 0 24 24" fill="currentColor" style="width:75%; height:75%; color:white; opacity:0.95;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z"></path></svg>
-                <div style="position:absolute; bottom:0; left:0; width:22px; height:22px; background:#4caf50; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #322d72;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" style="width:12px; height:12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-            </div>
-            <div>
-                <div id="menuName" style="font-size:20px; font-weight:bold; letter-spacing:0.3px;">DANTE DE BADTS EVANS WEISS</div>
-                <div style="font-size:16px; margin-top:2px; opacity:0.9;" id="menuCUIL">CUIL: 20-46836521-9</div>
-                <div style="color:#a5d6a7; font-size:14px; font-weight:500; margin-top:4px;">Identidad validada</div>
-            </div>
-        </div>
+<div class="bottom-nav">
+    <div class="nav-item active-nav" onclick="showScreenWithLag('homeScreen')">
+        <svg class="nav-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+        <div style="margin-top:2px;">Inicio</div>
     </div>
-
-    <div style="background:#ebebeb;">
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            Mi perfil
-        </div>
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            Hijos/as asociados
-        </div>
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-            </div>
-            Suscribir servicios
-        </div>
-        <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            </div>
-            Seguridad y privacidad
-        </div>
-        <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
-            <div class="menuIcon" style="font-weight: bold; font-size: 14px;">mi</div>
-            Acerca de
-        </div>
-        <div class="menuItem">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-            </div>
-            Términos y condiciones
-        </div>
-        <div class="menuItem" style="margin-top: 10px; border-top: 1px solid #dcdcdc;">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-            </div>
-            Cerrar sesión
-        </div>
-        <div class="menuItem" onclick="closeMenu()">
-            <div class="menuIcon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            </div>
-            Volver al inicio
-        </div>
+    <div class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l5 5v11a2 2 0 0 1-2 2z"></path></svg>
+        <div style="margin-top:2px;">Novedades</div>
+    </div>
+    <div class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+        <div style="margin-top:2px;">Teléfonos</div>
+    </div>
+    <div class="nav-item" onclick="openModal()">
+        <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <div style="margin-top:2px;">Configurar</div>
     </div>
 </div>
 
-<div id="menuOverlay" onclick="closeMenu()" style="position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:9999; display:none;"></div>
-
-<div id="detailModal" style="position:fixed; inset:0; background:rgba(0,0,0,.55); backdrop-filter:blur(4px); display:none; justify-content:center; align-items:center; z-index:999999; padding:20px;">
-    <div style="width:100%; max-width:520px; background:white; border-radius:28px; overflow:hidden; animation:showDetail .25s ease;">
-        <div style="background:#322d72; color:white; padding:24px; font-size:26px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
-            <div>Documento Digital</div>
-            <div onclick="closeDetail()" style="cursor:pointer; font-size:34px;">✕</div>
-        </div>
-        <div style="padding:26px;">
-            <div style="display:flex; gap:22px; align-items:flex-start; margin-bottom:28px;">
-                <img id="detailPhoto" style="width:120px; height:150px; object-fit:cover; border-radius:14px; background:#eee;">
-                <div style="flex:1;">
-                    <div style="color:#777; margin-bottom:4px;">Nombre completo</div>
-                    <div id="detailName" style="font-size:24px; font-weight:bold; margin-bottom:18px;"></div>
-                    <div style="color:#777; margin-bottom:4px;">DNI</div>
-                    <div id="detailDNI" style="font-size:22px; font-weight:bold;"></div>
-                </div>
-            </div>
-            <div class="detailRow">
-                <div class="detailLabel">Número de trámite</div>
-                <div class="detailValue">00581294731</div>
-            </div>
-            <div class="detailRow">
-                <div class="detailLabel">Nacionalidad</div>
-                <div class="detailValue">Argentina</div>
-            </div>
-            <div class="detailRow">
-                <div class="detailLabel">Fecha de nacimiento</div>
-                <div class="detailValue" id="detailBirth"></div>
-            </div>
-            <div class="detailRow">
-                <div class="detailLabel">Domicilio</div>
-                <div class="detailValue">Pasaje Carabelas del Sur 1847, Parque Chas, Ciudad Autónoma de Buenos Aires</div>
-            </div>
-        </div>
+<div id="sideMenu" style="position:fixed; top:0; left:-100%; width:85%; max-width:320px; height:100%; background:#f5f5f5; z-index:99999; transition:.3s; overflow-y:auto; box-shadow:10px 0 30px rgba(0,0,0,0.2);">
+    <div style="background:#322d72; padding:24px 16px; color:white; position:relative;">
+        <div onclick="closeMenu()" style="font-size:24px; cursor:pointer; margin-bottom: 20px;">←</div>
+        <div style="font-size:18px; font-weight:bold;" id="menuName">BEN ASTBURY</div>
+        <div style="font-size:14px; opacity:0.8; margin-top:4px;" id="menuCUIL">CUIL: 20-50676407-9</div>
+    </div>
+    <div>
+        <div class="menuItem" onclick="closeMenu()">Mi perfil</div>
+        <div class="menuItem" onclick="closeMenu()">Cerrar sesión</div>
     </div>
 </div>
+
+<div id="menuOverlay" onclick="closeMenu()" style="position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:9999; display:none;"></div>
 
 <script>
-/* DATOS */
+/* DATOS INICIALES ORIGINALES */
 let data = {
-    name:"DANTE DE BADTS EVANS WEISS",
-    dni:"46.836.521",
-    birth:"2005-01-01",
-    active:true,
-    customImage:null
+    name: "BEN ASTBURY",
+    dni: "50.676.407",
+    birth: "2010-09-27",
+    active: true,
+    customImage: null,
+    faceImage: null
 };
 
-/* STORAGE */
 function saveData(){
     localStorage.setItem("miArgentina", JSON.stringify(data));
 }
 
-/* MENU */
 function openMenu(){
     document.getElementById("sideMenu").style.left = "0";
     document.getElementById("menuOverlay").style.display = "block";
@@ -815,29 +799,29 @@ function closeMenu(){
     document.getElementById("menuOverlay").style.display = "none";
 }
 
-/* DETALLE */
 function openDetail(){
-    document.getElementById("detailModal").style.display = "flex";
-    document.getElementById("detailName").innerText = data.name;
-    document.getElementById("detailDNI").innerText = data.dni;
+    showScreenWithLag('detailScreen');
     
-    let parts = data.birth.split("-");
-    if(parts.length === 3) {
-        document.getElementById("detailBirth").innerText = parts[2] + "/" + parts[1] + "/" + parts[0];
+    document.getElementById("detailFullNameTitle").innerText = data.name;
+
+    let spaceIndex = data.name.indexOf(" ");
+    if(spaceIndex !== -1) {
+        document.getElementById("detailNameVal").innerText = data.name.substring(spaceIndex + 1);
+        document.getElementById("detailSurnameVal").innerText = data.name.substring(0, spaceIndex);
     } else {
-        document.getElementById("detailBirth").innerText = data.birth;
+        document.getElementById("detailNameVal").innerText = data.name;
+        document.getElementById("detailSurnameVal").innerText = "ASTBURY";
     }
+    
+    document.getElementById("detDNI").innerText = data.dni;
+    document.getElementById("detailBirth").innerText = data.birth;
 
-    let detailPhoto = document.getElementById("detailPhoto");
-    if(data.customImage){
-        detailPhoto.src = data.customImage;
-    }else{
-        detailPhoto.src = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+    let detailAvatarImage = document.getElementById("detailAvatarImage");
+    if(data.faceImage){
+        detailAvatarImage.src = data.faceImage;
+    } else {
+        detailAvatarImage.src = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
     }
-}
-
-function closeDetail(){
-    document.getElementById("detailModal").style.display = "none";
 }
 
 function loadData(){
@@ -848,13 +832,9 @@ function loadData(){
     render();
 }
 
-/* RENDER */
 function render(){
     document.getElementById("topName").innerText = data.name;
-    document.getElementById("welcomeText").innerText = "¡Hola, " + data.name + "!";
-
-    let now = new Date();
-    document.getElementById("updateText").innerText = "Última actualización: " + now.toLocaleDateString() + " " + now.toLocaleTimeString();
+    document.getElementById("welcomeText").innerText = "¡Hola, " + data.name.split(" ")[0] + "!";
 
     let dniImage = document.getElementById("dniImage");
     let emptyDNI = document.getElementById("emptyDNI");
@@ -869,51 +849,51 @@ function render(){
     }
 
     document.getElementById("menuName").innerText = data.name;
-    
     let cleanDNI = data.dni.replace(/\./g, "");
     document.getElementById("menuCUIL").innerText = "CUIL: 20-" + cleanDNI + "-9";
 
     generateQR();
 }
 
-/* QR */
 function generateQR(){
     QRCode.toCanvas(
         document.getElementById("qrCanvas"),
         JSON.stringify({
-            nombre:data.name,
-            dni:data.dni,
-            nacimiento:data.birth,
-            estado:data.active
+            nombre: data.name,
+            dni: data.dni,
+            estado: data.active
         }),
-        { width:220 }
+        { width: 180 }
     );
 
-    document.getElementById("qrInfo").innerHTML = "<b>" + data.name + "</b><br>DNI: " + data.dni + "<br>Nacimiento: " + data.birth + "<br><br>Estado: " + (data.active ? "Documento válido" : "Documento desactivado");
+    document.getElementById("qrInfo").innerHTML = "<b>" + data.name + "</b><br>DNI: " + data.dni + "<br>Estado: " + (data.active ? "Documento válido" : "Documento desactivado");
 }
 
 function toggleQR(){
     let qr = document.getElementById("qrContent");
     if(qr.style.display === "block"){
         qr.style.display = "none";
-        document.getElementById("qrArrow").innerText = "⌄";
+        document.getElementById("qrArrow").innerText = "▼";
     }else{
         qr.style.display = "block";
-        document.getElementById("qrArrow").innerText = "⌃";
+        document.getElementById("qrArrow").innerText = "▲";
     }
 }
 
-/* ACTIVAR / DESACTIVAR */
 function toggleDNI(){
     data.active = !data.active;
     saveData();
     render();
 }
 
-/* PANTALLAS CON LAG SIMULADO */
 function showScreen(id){
     document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
     document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active-nav"));
+    if(id === 'homeScreen') {
+        document.querySelectorAll(".nav-item")[0].classList.add("active-nav");
+    }
 }
 
 function showScreenWithLag(id){
@@ -923,10 +903,9 @@ function showScreenWithLag(id){
     setTimeout(function(){
         document.getElementById("loadingScreen").classList.remove("active");
         document.getElementById(id).classList.add("active");
-    }, 1500);
+    }, 1000);
 }
 
-/* VALIDACIÓN DE PIN */
 function validateAndGoDNI(){
     let pinField = document.getElementById("loginPinField");
     let errorText = document.getElementById("pinErrorText");
@@ -949,7 +928,6 @@ function clearPinError(){
     errorText.style.display = "none";
 }
 
-/* FORMATO DNI */
 function formatDNI(input){
     let value = input.value.replace(/\D/g,'');
     value = value.substring(0,8);
@@ -961,7 +939,6 @@ function formatDNI(input){
     input.value = value;
 }
 
-/* MODAL */
 function openModal(){
     document.getElementById("modal").style.display = "flex";
     document.getElementById("editName").value = data.name;
@@ -979,16 +956,40 @@ function saveModal(){
     data.birth = document.getElementById("editBirth").value;
 
     let imageInput = document.getElementById("modalImage");
+    let faceInput = document.getElementById("modalFaceImage");
+    
     let file = imageInput.files[0];
+    let faceFile = faceInput.files[0];
+
+    let checkLoaders = [];
 
     if(file){
-        let reader = new FileReader();
-        reader.onload = function(event){
-            data.customImage = event.target.result;
+        checkLoaders.push(new Promise(function(resolve) {
+            let reader = new FileReader();
+            reader.onload = function(event){
+                data.customImage = event.target.result;
+                resolve();
+            }
+            reader.readAsDataURL(file);
+        }));
+    }
+
+    if(faceFile){
+        checkLoaders.push(new Promise(function(resolve) {
+            let reader = new FileReader();
+            reader.onload = function(event){
+                data.faceImage = event.target.result;
+                resolve();
+            }
+            reader.readAsDataURL(faceFile);
+        }));
+    }
+
+    if(checkLoaders.length > 0) {
+        Promise.all(checkLoaders).then(function() {
             finishSave();
-        }
-        reader.readAsDataURL(file);
-    }else{
+        });
+    } else {
         finishSave();
     }
 }
@@ -999,9 +1000,7 @@ function finishSave(){
     closeModal();
 }
 
-/* INICIAR */
 loadData();
 </script>
-
 </body>
 </html>

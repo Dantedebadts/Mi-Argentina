@@ -906,20 +906,8 @@ function showScreenWithLag(id){
     }, 1000);
 }
 
-function validateAndGoDNI(){
-    let pinField = document.getElementById("loginPinField");
-    let errorText = document.getElementById("pinErrorText");
-    let value = pinField.value.trim();
+
     
-    if(value === ""){
-        pinField.classList.add("error");
-        errorText.style.display = "block";
-    } else {
-        pinField.classList.remove("error");
-        errorText.style.display = "none";
-        showScreenWithLag("dniScreen");
-    }
-}
 
 function clearPinError(){
     let pinField = document.getElementById("loginPinField");

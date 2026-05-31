@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#322d72">
+<meta name="theme-color" content="#2f31b7">
 <link rel="icon" href="data:,">
 <link rel="icon" type="image/png" href="./img/miARG_logo.png">
 <title>Mi Argentina - Proyecto</title>
@@ -18,12 +18,12 @@
 }
 
 body{
-    background:#ebebeb;
+    background:#f5f6fa;
     overflow-x:hidden;
     position:relative;
 }
 
-/* PANTALLAS CON TUS ANIMACIONES ORIGINALES */
+/* PANTALLAS CON ANIMACIONES */
 .screen{
     width:100%;
     min-height:100vh;
@@ -34,7 +34,7 @@ body{
     pointer-events:none;
     transform:translateX(30px);
     transition: opacity .28s ease, transform .28s ease;
-    background:#ebebeb;
+    background:#f5f6fa;
 }
 
 .active{
@@ -46,7 +46,7 @@ body{
 
 /* TOPBAR */
 .topbar{
-    background:#322d72;
+    background:#2f31b7;
     color:white;
     height:70px;
     display:flex;
@@ -62,10 +62,9 @@ body{
     font-size:32px;
 }
 
-/* GENERAL - Agregado padding inferior para no tapar contenido */
 .page{
     padding:16px;
-    padding-bottom: 90px;
+    padding-bottom: 100px;
 }
 
 .card{
@@ -114,7 +113,7 @@ body{
 
 .btn{
     width:100%;
-    background:#322d72;
+    background:#2f31b7;
     color:white;
     border:none;
     padding:16px;
@@ -127,7 +126,7 @@ body{
 .forgot{
     text-align:center;
     margin-top:25px;
-    color:#322d72;
+    color:#2f31b7;
     font-size:16px;
     cursor:pointer;
 }
@@ -138,7 +137,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #322d72;
+    background: #2f31b7;
     color: white;
 }
 
@@ -181,11 +180,11 @@ body{
 
 .arrow{
     font-size:24px;
-    color:#322d72;
+    color:#2f31b7;
     font-weight: bold;
 }
 
-/* DNI CARD - Agregado padding inferior para no tapar con el footer */
+/* DNI CARD */
 .dni-card{
     background:white;
     margin:12px;
@@ -241,7 +240,7 @@ body{
     text-align:center;
     cursor:pointer;
     font-size:16px;
-    color:#322d72;
+    color:#2f31b7;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -264,7 +263,7 @@ body{
     justify-content:space-between;
     align-items:center;
     font-size:17px;
-    color: #322d72;
+    color: #2f31b7;
     font-weight: bold;
     cursor:pointer;
 }
@@ -309,7 +308,7 @@ canvas{
     font-size:22px;
     font-weight:bold;
     margin-bottom:20px;
-    color:#322d72;
+    color:#2f31b7;
 }
 
 .modal-field{
@@ -353,7 +352,7 @@ canvas{
 }
 
 .save-btn{
-    background:#322d72;
+    background:#2f31b7;
     color:white;
 }
 
@@ -370,7 +369,7 @@ canvas{
     background:white;
 }
 
-/* DISEÑO DE LA VISTA DETALLE COMPLETO - Agregado padding inferior */
+/* DISEÑO DETALLE */
 .detailContainer {
     background: white;
     min-height: 100vh;
@@ -433,7 +432,43 @@ canvas{
     font-weight: bold;
 }
 
-/* BARRA DE NAVEGACIÓN INFERIOR (FOOTER FIJO MOVIL) */
+/* NUEVA CUADRÍCULA DE OPCIONES (4x2 EXACTO) */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.option-item {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 4px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f0f0f0;
+}
+
+.option-icon {
+    color: #3632cf;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option-text {
+    font-size: 11px;
+    color: #2b2b2b;
+    font-weight: bold;
+}
+
+/* BARRA DE NAVEGACIÓN INFERIOR (FOOTER) */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -442,15 +477,15 @@ canvas{
     background: white;
     display: flex;
     justify-content: space-around;
-    padding: 12px 0;
-    border-top: 1px solid #e0e0e0;
-    z-index: 999; /* Se mantiene arriba flotando limpiamente */
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    padding: 10px 0;
+    border-top: 1px solid #e5e5e5;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
 }
 
 .nav-item {
     text-align: center;
-    color: #757575;
+    color: #707070;
     font-size: 12px;
     display: flex;
     flex-direction: column;
@@ -461,7 +496,7 @@ canvas{
 }
 
 .nav-item.active-nav {
-    color: #322d72;
+    color: #2f31b7;
     font-weight: bold;
 }
 
@@ -501,94 +536,114 @@ canvas{
 </div>
 
 <div class="screen active" id="homeScreen">
-    <div style="background:#322d72; height:130px; color:white; padding:20px; position:relative;">
-        <div onclick="openMenu()" style="font-size:28px; position:absolute; left:20px; top:18px; cursor:pointer;">
+    <div style="background: #2f31b7; height: 140px; color: white; padding: 20px; position: relative; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
+        <div onclick="openMenu()" style="font-size: 26px; position: absolute; left: 20px; top: 22px; cursor: pointer; font-weight: bold;">
             ☰
         </div>
-        <div style="position:absolute; right:20px; top:20px; font-size:24px; font-weight:500; letter-spacing: 0.5px;">
-            mi<span style="font-weight:bold;">Argentina</span>
+        <div style="position: absolute; right: 55px; top: 25px; font-size: 23px; font-weight: 500; letter-spacing: -0.3px;">
+            mi<span style="font-weight: bold;">Argentina</span>
         </div>
-        <div id="welcomeText" style="text-align:left; margin-top:60px; font-size:22px; font-weight:bold;">
+        <div style="position: absolute; right: 16px; top: 20px; width: 34px; height: 34px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg viewBox="0 0 24 24" fill="white" style="width: 20px; height: 20px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        </div>
+        <div id="welcomeText" style="text-align: left; position: absolute; bottom: 25px; left: 20px; font-size: 20px; font-weight: bold;">
             ¡Hola, Ben!
         </div>
     </div>
 
-    <div class="page" style="margin-top: -15px; display: flex; flex-direction: column; gap: 14px;">
+    <div class="page" style="margin-top: -18px; display: flex; flex-direction: column; gap: 14px;">
         
-        <div style="background: white; border-radius: 16px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid #eaeaea;">
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div style="width: 40px; height: 40px; color: #322d72; display: flex; align-items: center;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <div style="background: white; border-radius: 16px; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eef0f5;">
+            <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
+                <div style="width: 42px; height: 42px; color: #3632cf; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 38px; height: 38px;"><rect x="5" y="6" width="14" height="14" rx="2" stroke-dasharray="2 1"></rect><path d="M9 3v3M15 3v3M5 10h14" stroke-style="solid"></path><text x="9" y="18" font-size="6" font-weight="bold" fill="currentColor" stroke="none">001</text></svg>
                 </div>
-                <div style="font-size: 15px; color: #333; font-weight: 500;">No tenés turnos programados.</div>
+                <div style="font-size: 16px; color: #2c2c2c; font-weight: 500; letter-spacing: -0.2px;">No tenés turnos programados.</div>
             </div>
-            <button style="background: #322d72; color: white; border: none; padding: 8px 14px; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer;">Sacá turno</button>
+            <button style="background: #3632cf; color: white; border: none; padding: 10px 22px; border-radius: 25px; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 2px 6px rgba(54,50,207,0.2);">Sacá turno</button>
         </div>
 
-        <div style="background: #e8f5e9; border-radius: 16px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid #c8e6c9;">
-            <div style="font-size: 16px; color: #1b5e20; font-weight: bold; flex: 1; padding-right: 10px;">
+        <div style="background: #e2f6ec; border-radius: 16px; padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #ceeadd;">
+            <div style="font-size: 18px; color: #155734; font-weight: bold; flex: 1; padding-right: 15px; letter-spacing: -0.3px; line-height: 1.2;">
                 ¡Todas tus credenciales están al día!
             </div>
-            <div style="width: 60px; height: 44px; position: relative;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="1.5" style="width: 100%; height: 100%;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><circle cx="7" cy="10" r="2"></circle><line x1="13" y1="9" x2="19" y2="9"></line><line x1="13" y1="13" x2="19" y2="13"></line></svg>
-                <div style="position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; background: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div style="width: 52px; height: 40px; position: relative; flex-shrink: 0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2fa869" stroke-width="1.2" style="width: 100%; height: 100%;"><rect x="2" y="4" width="20" height="16" rx="3"></rect><circle cx="7" cy="11" r="2.5"></circle><line x1="13" y1="9" x2="19" y2="9" stroke-width="1.5"></line><line x1="13" y1="13" x2="17" y2="13" stroke-width="1.5"></line></svg>
+                <div style="position: absolute; top: -5px; right: -5px; width: 20px; height: 20px; background: #2fa869; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #e2f6ec;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" style="width: 10px; height: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
             </div>
         </div>
 
-        <div style="font-size: 18px; font-weight: bold; color: #222; margin-top: 6px; margin-bottom: 2px;">
+        <div style="font-size: 18px; font-weight: bold; color: #2c2c2c; margin-top: 10px; margin-bottom: -2px; padding-left: 2px;">
             ¿Qué necesitás hoy?
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-            <div onclick="showScreenWithLag('docsScreen')" style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="3"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="19" y2="13"></line></svg>
+        <div class="options-grid">
+            <div class="option-item" onclick="showScreenWithLag('docsScreen')">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.5"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="18" y2="13"></line></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Documentos</div>
+                <div class="option-text">Documentos</div>
             </div>
-            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1 .4-1 1v4H2c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+            <div class="option-item">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1 .4-1 1v4H2c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Vehículos</div>
+                <div class="option-text">Vehículos</div>
             </div>
-            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <div class="option-item">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="16" height="13" rx="2"></rect><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Trabajo</div>
+                <div class="option-text">Trabajo</div>
             </div>
-            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <div class="option-item">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Salud</div>
+                <div class="option-text">Salud</div>
             </div>
-            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line></svg>
+
+            <div class="option-item">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line><text x="7" y="14" font-size="8" font-weight="bold" fill="currentColor" stroke="none" style="font-family: sans-serif;">$</text></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Cobros</div>
+                <div class="option-text">Cobros</div>
             </div>
-            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+            <div class="option-item">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Trámites</div>
+                <div class="option-text">Trámites</div>
             </div>
-            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect></svg>
+            <div class="option-item">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="6" width="14" height="14" rx="2" stroke-dasharray="2 1"></rect><path d="M9 3v3M15 3v3M5 10h14"></path><text x="10" y="17" font-size="6" font-weight="bold" fill="currentColor" stroke="none">01</text></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Turnos</div>
+                <div class="option-text">Turnos</div>
             </div>
-            <div style="background:white; border-radius:12px; padding:20px; text-align:center; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-                <div style="display: flex; justify-content: center; margin-bottom: 8px; color: #322d72;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            <div class="option-item">
+                <div class="option-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><circle cx="18" cy="11" r="2"></circle><path d="M21 17v2"></path></svg>
                 </div>
-                <div style="font-size:16px; color:#333; font-weight:500;">Hijos</div>
+                <div class="option-text">Hijos</div>
+            </div>
+        </div>
+
+        <div style="background: #cfe2fe; border-radius: 16px; padding: 18px; margin-top: 10px; display: flex; align-items: center; gap: 16px; border: 1px solid #b4d3fe; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+            <div style="background: white; border-radius: 12px; width: 56px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #a4c6fc; flex-shrink: 0;">
+                <div style="width:100%; background:#ec407a; height:12px; border-top-left-radius:11px; border-top-right-radius:11px; position:relative;">
+                    <div style="position:absolute; width:4px; height:6px; background:#aaa; top:-3px; left:12px; border-radius:2px;"></div>
+                    <div style="position:absolute; width:4px; height:6px; background:#aaa; top:-3px; right:12px; border-radius:2px;"></div>
+                </div>
+                <div style="font-size: 20px; font-weight: bold; color: #333; margin-top: 2px; line-height:1.1;">15</div>
+                <div style="font-size: 8px; color: #777; font-weight: bold;">JUN</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 13px; color: #555; font-weight: 500;">Próximo feriado</div>
+                <div style="font-size: 16px; color: #111; font-weight: bold;">15 de junio</div>
+                <div style="font-size: 13px; color: #444; line-height: 1.2; letter-spacing: -0.1px;"><b>17 de junio.</b> Paso a la Inmortalidad del Gral. Don Mar...</div>
             </div>
         </div>
 
@@ -755,13 +810,13 @@ canvas{
         <div style="margin-top:2px;">Teléfonos</div>
     </div>
     <div class="nav-item" onclick="openModal()">
-        <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        <div style="margin-top:2px;">Configurar</div>
+        <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+        <div style="margin-top:2px;">Tina</div>
     </div>
 </div>
 
 <div id="sideMenu" style="position:fixed; top:0; left:-100%; width:85%; max-width:320px; height:100%; background:#f5f5f5; z-index:99999; transition:.3s; overflow-y:auto; box-shadow:10px 0 30px rgba(0,0,0,0.2);">
-    <div style="background:#322d72; padding:24px 16px; color:white; position:relative;">
+    <div style="background:#2f31b7; padding:24px 16px; color:white; position:relative;">
         <div onclick="closeMenu()" style="font-size:24px; cursor:pointer; margin-bottom: 20px;">←</div>
         <div style="font-size:18px; font-weight:bold;" id="menuName">BEN ASTBURY</div>
         <div style="font-size:14px; opacity:0.8; margin-top:4px;" id="menuCUIL">CUIL: 20-50676407-9</div>
@@ -775,7 +830,6 @@ canvas{
 <div id="menuOverlay" onclick="closeMenu()" style="position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:9999; display:none;"></div>
 
 <script>
-/* DATOS INICIALES ORIGINALES */
 let data = {
     name: "BEN ASTBURY",
     dni: "50.676.407",
@@ -909,10 +963,16 @@ function showScreenWithLag(id){
 function validateAndGoDNI(){
     let pinField = document.getElementById("loginPinField");
     let errorText = document.getElementById("pinErrorText");
+    let value = pinField.value.trim();
     
-    pinField.classList.remove("error");
-    errorText.style.display = "none";
-    showScreenWithLag("dniScreen");
+    if(value === ""){
+        pinField.classList.add("error");
+        errorText.style.display = "block";
+    } else {
+        pinField.classList.remove("error");
+        errorText.style.display = "none";
+        showScreenWithLag("dniScreen");
+    }
 }
 
 function clearPinError(){

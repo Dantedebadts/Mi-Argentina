@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2f31b7">
+<meta name="theme-color" content="#2b30be">
 <link rel="icon" href="data:,">
 <link rel="icon" type="image/png" href="./img/miARG_logo.png">
 <title>Mi Argentina - Proyecto</title>
@@ -15,15 +15,16 @@
     padding:0;
     box-sizing:border-box;
     font-family:Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body{
-    background:#f5f6fa;
+    background:#ebebeb;
     overflow-x:hidden;
     position:relative;
 }
 
-/* PANTALLAS CON ANIMACIONES */
+/* PANTALLAS CON ANIMACIONES ORIGINALES */
 .screen{
     width:100%;
     min-height:100vh;
@@ -34,7 +35,7 @@ body{
     pointer-events:none;
     transform:translateX(30px);
     transition: opacity .28s ease, transform .28s ease;
-    background:#f5f6fa;
+    background:#ebebeb;
 }
 
 .active{
@@ -44,188 +45,164 @@ body{
     z-index:10;
 }
 
-/* TOPBAR */
+/* TOPBAR MEJORADO CON COLOR OFICIAL */
 .topbar{
-    background:#2f31b7;
+    background:#2b30be;
     color:white;
-    height:70px;
+    height:65px;
     display:flex;
     align-items:center;
-    padding:0 20px;
-    font-size:22px;
-    font-weight:500;
-    gap:20px;
+    padding:0 16px;
+    font-size:19px;
+    font-weight:bold;
+    gap:16px;
 }
 
 .back{
     cursor:pointer;
-    font-size:32px;
+    font-size:26px;
+    display: flex;
+    align-items: center;
+}
+
+.refresh-icon {
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: normal;
+    margin-left: auto;
 }
 
 .page{
-    padding:16px;
+    padding:14px;
     padding-bottom: 100px;
 }
 
-.card{
-    background:white;
-    border-radius:16px;
-    padding:24px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.05);
-}
-
-/* LOGIN */
-.pin-title{
-    font-size:24px;
-    margin-bottom:30px;
-    color:#333;
-    font-weight: bold;
-}
-
-.pin-container{
-    margin-bottom:35px;
-    position:relative;
-}
-
-.pin-input{
-    width:100%;
-    border:none;
-    border-bottom:2px solid #999;
-    background:none;
-    font-size:24px;
-    padding:8px 0;
-    outline:none;
-    text-align: center;
-    letter-spacing: 4px;
-}
-
-.pin-input.error{
-    border-bottom:2px solid #d32f2f;
-}
-
-.pin-error-text{
-    color:#d32f2f;
-    font-size:14px;
-    margin-top:5px;
-    display:none;
-    text-align: center;
-}
-
-.btn{
-    width:100%;
-    background:#2f31b7;
-    color:white;
-    border:none;
-    padding:16px;
-    border-radius:50px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.forgot{
-    text-align:center;
-    margin-top:25px;
-    color:#2f31b7;
-    font-size:16px;
-    cursor:pointer;
-}
-
-/* PANTALLA DE CARGA */
+/* PANTALLA DE CARGA INTERMEDIA LIMPIA BLANCA/GRIS */
 #loadingScreen {
+    background: #ebebeb;
+}
+
+/* DISEÑO DE CONTENEDOR DESPLEGABLE DNI (image_872c01.jpg) */
+.renaper-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border: 1px solid #e2e2e2;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.renaper-header {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: #2f31b7;
-    color: white;
+    padding: 16px;
+    gap: 16px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.spinner {
-    width: 44px;
-    height: 44px;
-    border: 4px solid rgba(255,255,255,0.2);
-    border-top: 4px solid white;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin-bottom: 20px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* DOCUMENTOS */
-.doc-option{
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:16px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    cursor:pointer;
-    box-shadow:0 2px 8px rgba(0,0,0,0.03);
-}
-
-.doc-left{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    font-size:16px;
-    font-weight:bold;
-    color:#333;
-}
-
-.arrow{
-    font-size:24px;
-    color:#2f31b7;
+.renaper-header-title {
+    font-size: 16px;
     font-weight: bold;
+    color: #222;
+    line-height: 1.3;
+    flex: 1;
 }
 
-/* DNI CARD */
+.renaper-body {
+    padding: 20px 16px;
+}
+
+.btn-blue {
+    width: 100%;
+    background: #2b30be;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.btn-white {
+    width: 100%;
+    background: white;
+    color: #2b30be;
+    border: 2px solid #2b30be;
+    padding: 12px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.renaper-subtext {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.renaper-info-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* DNI CARD DE LA FOTO */
 .dni-card{
     background:white;
-    margin:12px;
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,0.06);
-    margin-bottom: 95px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    margin-bottom: 16px;
 }
 
 .top-name{
-    padding:16px 20px 8px;
-    font-size: 20px;
-    color:#222;
-    font-weight:bold;
+    padding: 20px 20px 12px 20px;
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+}
+
+.dni-img-wrapper {
+    padding: 0 16px 16px 16px;
 }
 
 .dni-img{
-    width:calc(100% - 32px);
-    margin:0 16px 16px 16px;
-    border-radius:12px;
+    width:100%;
+    border-radius:4px;
     display:block;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
 
 #emptyDNI{
-    margin:16px;
     padding:60px 20px;
-    border:2px dashed #bbb;
-    border-radius:12px;
+    border:2px dashed #ccc;
+    border-radius:6px;
     text-align:center;
     color:#777;
-    font-size:16px;
+    font-size:15px;
     background:#fafafa;
 }
 
 .update{
-    text-align:center;
-    padding:14px;
-    color:#555;
-    font-size: 14px;
-    background: #f9f9f9;
+    text-align: center;
+    padding: 16px 12px;
+    color: #666;
+    font-size: 13px;
+    background: white;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 }
@@ -236,11 +213,11 @@ body{
 
 .action{
     width:50%;
-    padding:16px;
+    padding:14px;
     text-align:center;
     cursor:pointer;
-    font-size:16px;
-    color:#2f31b7;
+    font-size:15px;
+    color:#222;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -252,25 +229,25 @@ body{
     border-right: 1px solid #eee;
 }
 
-/* QR */
+/* QR SECCIÓN ACTUALIZADA (image_86d9ae.jpg) */
 .qr-section{
-    border-top:1px solid #eee;
-    padding:16px;
+    padding: 14px 16px;
+    border-top: 1px solid #eee;
 }
 
 .qr-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-size:17px;
-    color: #2f31b7;
+    font-size:15px;
+    color:#222;
     font-weight: bold;
     cursor:pointer;
 }
 
 .qr-content{
     display:none;
-    margin-top:20px;
+    margin-top:16px;
     text-align:center;
 }
 
@@ -279,9 +256,9 @@ canvas{
 }
 
 .info{
-    margin-top:14px;
+    margin-top:12px;
     color:#444;
-    font-size: 15px;
+    font-size:14px;
     line-height:1.4;
 }
 
@@ -302,13 +279,15 @@ canvas{
     background:white;
     border-radius:20px;
     padding:24px;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-title{
     font-size:22px;
     font-weight:bold;
     margin-bottom:20px;
-    color:#2f31b7;
+    color:#2b30be;
 }
 
 .modal-field{
@@ -352,7 +331,7 @@ canvas{
 }
 
 .save-btn{
-    background:#2f31b7;
+    background:#2b30be;
     color:white;
 }
 
@@ -369,7 +348,7 @@ canvas{
     background:white;
 }
 
-/* DISEÑO DETALLE */
+/* DISEÑO VER DETALLE REFINADO */
 .detailContainer {
     background: white;
     min-height: 100vh;
@@ -392,12 +371,45 @@ canvas{
     background: #e0e0e0;
 }
 
+/* CÓDIGO DE BARRAS */
+.barcode-wrapper {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.barcode-lines {
+    height: 42px;
+    width: 230px;
+    background: repeating-linear-gradient(
+        90deg,
+        #111,
+        #111 2px,
+        #fff 2px,
+        #fff 5px,
+        #111 5px,
+        #111 7px,
+        #fff 7px,
+        #fff 11px
+    );
+}
+
+.barcode-text {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #333;
+    font-weight: bold;
+}
+
 .detail-name-title {
-    margin-top: 12px;
-    font-size: 20px;
+    margin-top: 14px;
+    font-size: 19px;
     font-weight: bold;
     color: #111111;
     text-align: center;
+    padding: 0 20px;
 }
 
 .detail-info-grid {
@@ -432,7 +444,7 @@ canvas{
     font-weight: bold;
 }
 
-/* CUADRÍCULA DE OPCIONES (4x2 EXACTO) */
+/* CUADRÍCULA DE OPCIONES (4 COLUMNAS EXACTAS) */
 .options-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -455,7 +467,7 @@ canvas{
 }
 
 .option-icon {
-    color: #3632cf;
+    color: #2b30be;
     margin-bottom: 8px;
     display: flex;
     justify-content: center;
@@ -468,7 +480,72 @@ canvas{
     font-weight: bold;
 }
 
-/* BARRA DE NAVEGACIÓN INFERIOR (FOOTER) */
+/* SECCIÓN MIS TRÁMITES */
+.section-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 18px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    border: 1px solid #f0f0f0;
+    margin-top: 4px;
+}
+
+.section-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 16px;
+}
+
+.row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.row-item:last-child {
+    border-bottom: none;
+}
+
+.row-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.row-icon-container {
+    width: 38px;
+    height: 38px;
+    background: #f0f0ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2b30be;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.row-text-main {
+    font-size: 14px;
+    font-weight: bold;
+    color: #111;
+}
+
+.row-text-sub {
+    font-size: 12px;
+    color: #777;
+    margin-top: 3px;
+}
+
+.row-arrow {
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* NAVBAR INFERIOR */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -496,7 +573,7 @@ canvas{
 }
 
 .nav-item.active-nav {
-    color: #2f31b7;
+    color: #2b30be;
     font-weight: bold;
 }
 
@@ -509,35 +586,18 @@ canvas{
 </head>
 <body>
 
+<!-- PANTALLA DE CARGA OFICIAL INTERMEDIA -->
 <div class="screen" id="loadingScreen">
-    <div class="spinner"></div>
-    <div style="font-size: 24px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 6px;">
-        mi<span style="font-weight:bold;">Argentina</span>
-    </div>
-    <div style="font-size: 15px; opacity: 0.8;">Cargando mi información...</div>
-</div>
-
-<div class="screen" id="loginScreen">
     <div class="topbar">
-        <div class="back" onclick="showScreenWithLag('docsScreen')">←</div>
-        Dni Digital
-    </div>
-    <div class="page">
-        <div class="card">
-            <div class="pin-title">Ingresá tu PIN de acceso</div>
-            <div class="pin-container">
-                <input id="loginPinField" class="pin-input" placeholder="••••••" type="password" maxlength="6" inputmode="numeric" oninput="clearPinError()">
-                <div id="pinErrorText" class="pin-error-text">Ingresá un código válido</div>
-            </div>
-            <button class="btn" onclick="validateAndGoDNI()">Ingresar</button>
-            <div class="forgot" onclick="openModal()">Olvidé mi PIN</div>
-        </div>
+        <div class="back">←</div>
+        <div id="loadingTitle">Dni Digital</div>
+        <div class="refresh-icon">↻</div>
     </div>
 </div>
 
+<!-- PANTALLA DE INICIO COMPLETA -->
 <div class="screen active" id="homeScreen">
-    <!-- HEADER AZUL OFICIAL -->
-    <div style="background: #2f31b7; height: 140px; color: white; padding: 20px; position: relative; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
+    <div style="background: #2b30be; height: 140px; color: white; padding: 20px; position: relative;">
         <div onclick="openMenu()" style="font-size: 26px; position: absolute; left: 20px; top: 22px; cursor: pointer; font-weight: bold;">
             ☰
         </div>
@@ -557,12 +617,12 @@ canvas{
         <!-- TURNOS PROGRAMADOS -->
         <div style="background: white; border-radius: 16px; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eef0f5;">
             <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
-                <div style="width: 42px; height: 42px; color: #3632cf; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <div style="width: 42px; height: 42px; color: #2b30be; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 38px; height: 38px;"><rect x="5" y="6" width="14" height="14" rx="2" stroke-dasharray="2 1"></rect><path d="M9 3v3M15 3v3M5 10h14" stroke-style="solid"></path><text x="9" y="18" font-size="6" font-weight="bold" fill="currentColor" stroke="none">001</text></svg>
                 </div>
                 <div style="font-size: 16px; color: #2c2c2c; font-weight: 500; letter-spacing: -0.2px;">No tenés turnos programados.</div>
             </div>
-            <button style="background: #3632cf; color: white; border: none; padding: 10px 22px; border-radius: 25px; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 2px 6px rgba(54,50,207,0.2);">Sacá turno</button>
+            <button style="background: #2b30be; color: white; border: none; padding: 10px 22px; border-radius: 25px; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 2px 6px rgba(43,48,190,0.2);">Sacá turno</button>
         </div>
 
         <!-- CREDENCIALES AL DÍA -->
@@ -582,10 +642,9 @@ canvas{
             ¿Qué necesitás hoy?
         </div>
 
-        <!-- CUADRÍCULA CORREGIDA (VA DIRECTO A DOCUMENTOS SIN PEDIR PIN) -->
+        <!-- CUADRÍCULA CORREGIDA (4 ARRIBA Y 4 ABAJO) -->
         <div class="options-grid">
-            <!-- FILA 1 -->
-            <div class="option-item" onclick="showScreenWithLag('docsScreen')">
+            <div class="option-item" onclick="showScreenWithLag('docsScreen', 'Documentos')">
                 <div class="option-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.5"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="18" y2="13"></line></svg>
                 </div>
@@ -610,7 +669,6 @@ canvas{
                 <div class="option-text">Salud</div>
             </div>
 
-            <!-- FILA 2 -->
             <div class="option-item">
                 <div class="option-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line><text x="7" y="14" font-size="8" font-weight="bold" fill="currentColor" stroke="none" style="font-family: sans-serif;">$</text></svg>
@@ -637,92 +695,141 @@ canvas{
             </div>
         </div>
 
-        <!-- BANNER DE PRÓXIMO FERIADO -->
-        <div style="background: #cfe2fe; border-radius: 16px; padding: 18px; margin-top: 10px; display: flex; align-items: center; gap: 16px; border: 1px solid #b4d3fe; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-            <div style="background: white; border-radius: 12px; width: 56px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #a4c6fc; flex-shrink: 0;">
-                <div style="width:100%; background:#ec407a; height:12px; border-top-left-radius:11px; border-top-right-radius:11px; position:relative;">
-                    <div style="position:absolute; width:4px; height:6px; background:#aaa; top:-3px; left:12px; border-radius:2px;"></div>
-                    <div style="position:absolute; width:4px; height:6px; background:#aaa; top:-3px; right:12px; border-radius:2px;"></div>
+        <!-- SECCIÓN MIS TRÁMITES -->
+        <div class="section-card">
+            <div class="section-title">Mis trámites</div>
+            <div class="row-item">
+                <div class="row-left">
+                    <div class="row-icon-container">✓</div>
+                    <div>
+                        <div class="row-text-main">Turnos</div>
+                        <div class="row-text-sub">Gestioná tus turnos solicitados</div>
+                    </div>
                 </div>
-                <div style="font-size: 20px; font-weight: bold; color: #333; margin-top: 2px; line-height:1.1;">15</div>
-                <div style="font-size: 8px; color: #777; font-weight: bold;">JUN</div>
+                <div class="row-arrow">➔</div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-                <div style="font-size: 13px; color: #555; font-weight: 500;">Próximo feriado</div>
-                <div style="font-size: 16px; color: #111; font-weight: bold;">15 de junio</div>
-                <div style="font-size: 13px; color: #444; line-height: 1.2; letter-spacing: -0.1px;"><b>17 de junio.</b> Paso a la Inmortalidad del Gral. Don Mar...</div>
+            <div class="row-item">
+                <div class="row-left">
+                    <div class="row-icon-container">✉</div>
+                    <div>
+                        <div class="row-text-main">Solicitudes digitales</div>
+                        <div class="row-text-sub">Revisá el estado de tus gestiones</div>
+                    </div>
+                </div>
+                <div class="row-arrow">➔</div>
             </div>
         </div>
-
     </div>
 </div>
 
+<!-- VISTA DOCUMENTOS REFORMADA SEGÚN image_872c01.jpg (MÓDULO RENAPER) -->
 <div class="screen" id="docsScreen">
     <div class="topbar">
-        <div class="back" onclick="showScreenWithLag('homeScreen')">←</div>
+        <div class="back" onclick="showScreenWithLag('homeScreen', 'Documentos')">←</div>
         Documentos
     </div>
     <div class="page">
-        <!-- AL TOCAR EL DNI, VA DIRECTO A DNI EN VEZ DE LOGIN -->
-        <div class="doc-option" onclick="showScreenWithLag('dniScreen')">
-            <div class="doc-left">Documento Nacional de Identidad (DNI)</div>
-            <div class="arrow">›</div>
+        
+        <!-- CARD EXTENSIBLE RENAPER -->
+        <div class="renaper-card">
+            <div class="renaper-header">
+                <!-- Icono DNI tarjeta -->
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2b30be" stroke-width="1.2" style="margin-top: 2px;"><rect x="2" y="4" width="20" height="16" rx="3"></rect><circle cx="7" cy="11" r="2.5"></circle><line x1="13" y1="9" x2="19" y2="9" stroke-width="1.5"></line><line x1="13" y1="13" x2="17" y2="13" stroke-width="1.5"></line></svg>
+                <div class="renaper-header-title">Documento Nacional de Identidad (DNI)</div>
+                <div style="color: #2b30be; font-size: 16px; font-weight: bold; cursor: pointer; padding-left: 4px;">▲</div>
+            </div>
+            
+            <div class="renaper-body">
+                <!-- Botón Principal Ir Directo al DNI simulando flujo sin PIN -->
+                <button class="btn-blue" onclick="showScreenWithLag('dniScreen', 'Dni Digital')">Ver DNI Digital</button>
+                
+                <div class="renaper-subtext" style="color: #8c8c8c; font-size: 13px; margin-bottom: 24px;">
+                    Datos suministrados por<br><span style="color: #6da2cd; font-weight: bold; font-size: 14px;">RENAPER</span>
+                </div>
+                
+                <div class="renaper-subtext" style="color: #333; font-size: 14px; font-weight: 500; padding: 4px 0;">
+                    Recordá que podés solicitar el DNI para vos y tus hijos y tenerlos disponibles en la App.
+                </div>
+                
+                <button class="btn-white">Solicitar DNI Digital</button>
+            </div>
         </div>
-        <div class="doc-option">
-            <div class="doc-left">Licencia Nacional de Conducir</div>
-            <div class="arrow">›</div>
+
+        <!-- Fila Informativa inferior -->
+        <div class="renaper-info-row">
+            <div style="width: 24px; height: 24px; border: 2px solid #2b30be; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #2b30be; font-weight: bold; font-size: 14px; font-family: serif; flex-shrink: 0;">i</div>
+            <div style="font-size: 14px; color: #2b30be; font-weight: bold; letter-spacing: -0.2px;">Cambié o voy a cambiar de dispositivo</div>
         </div>
+
     </div>
 </div>
 
+<!-- DNI PRINCIPAL AJUSTADO SEGÚN image_86d9ae.jpg -->
 <div class="screen" id="dniScreen">
     <div class="topbar">
-        <div class="back" onclick="showScreenWithLag('docsScreen')">←</div>
+        <div class="back" onclick="showScreenWithLag('docsScreen', 'Dni Digital')">←</div>
         Dni Digital
+        <div class="refresh-icon" onclick="showScreenWithLag('dniScreen', 'Dni Digital')">↾⇃</div>
     </div>
-    <div class="dni-card">
-        <div class="top-name" id="topName">BEN ASTBURY</div>
-        <img id="dniImage" class="dni-img" style="display:none">
-        <div id="emptyDNI">No hay imagen cargada</div>
-        
-        <div class="update" id="updateText">Última actualización: 28/05/2026 16:49 hs</div>
-        
-        <div class="actions">
-            <div class="action" onclick="openDetail()">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                Ver detalle
+    <div class="page">
+        <div class="dni-card">
+            <div class="top-name" id="topName">BEN ASTBURY</div>
+            <div class="dni-img-wrapper">
+                <img id="dniImage" class="dni-img" style="display:none">
+                <div id="emptyDNI">No hay imagen cargada</div>
             </div>
-            <div class="action" onclick="toggleDNI()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:2px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Desactivar DNI
-            </div>
-        </div>
-
-        <div class="qr-section">
-            <div class="qr-header" onclick="toggleQR()">
-                <div style="display:flex; align-items:center; gap:8px;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="3" height="3"></rect></svg>
-                    Verifica código QR
+            
+            <div class="update" id="updateText">Última actualización: 31/05/2026 14:01:22 hs</div>
+            
+            <div class="actions">
+                <div class="action" onclick="openDetail()">
+                    <span style="font-size:18px; color: #2b30be;">👁</span> Ver detalle
                 </div>
-                <div id="qrArrow">▼</div>
+                <div class="action" onclick="toggleDNI()">
+                    <span style="font-size:16px; color:#2b30be;">✕</span> Desactivar DNI
+                </div>
             </div>
-            <div class="qr-content" id="qrContent">
-                <canvas id="qrCanvas"></canvas>
-                <div class="info" id="qrInfo"></div>
+
+            <!-- SECCIÓN QR CON LOGO OFICIAL INTERCALADO (image_86d9ae.jpg) -->
+            <div class="qr-section">
+                <div class="qr-header" onclick="toggleQR()">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <!-- Icono Oficial Mi Argentina QR de 4 cuadrados -->
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2b30be" stroke-width="2.5">
+                            <rect x="2" y="2" width="8" height="8" rx="1"></rect>
+                            <rect x="14" y="2" width="8" height="8" rx="1"></rect>
+                            <rect x="2" y="14" width="8" height="8" rx="1"></rect>
+                            <rect x="14" y="14" width="8" height="8" rx="1"></rect>
+                        </svg>
+                        Verifica código QR
+                    </div>
+                    <div id="qrArrow" style="color: #888; font-size: 14px;">▼</div>
+                </div>
+                <div class="qr-content" id="qrContent">
+                    <canvas id="qrCanvas"></canvas>
+                    <div class="info" id="qrInfo"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- VISTA VER DETALLE -->
 <div class="screen" id="detailScreen">
     <div class="topbar">
-        <div class="back" onclick="showScreenWithLag('dniScreen')">←</div>
+        <div class="back" onclick="showScreenWithLag('dniScreen', 'Dni Digital')">←</div>
         Dni Digital
     </div>
     
     <div class="detailContainer">
         <div class="detail-photo-block">
             <img id="detailAvatarImage" class="detail-avatar" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+            
+            <div class="barcode-wrapper">
+                <div class="barcode-lines"></div>
+                <div class="barcode-text" id="barcodeNumber">00506764071</div>
+            </div>
+
             <div class="detail-name-title" id="detailFullNameTitle">BEN ASTBURY</div>
         </div>
 
@@ -774,6 +881,7 @@ canvas{
     </div>
 </div>
 
+<!-- MODAL SIMULADO CONFIG -->
 <div class="modal" id="modal">
     <div class="modal-content">
         <div class="modal-title">Editar Datos Simulados</div>
@@ -787,7 +895,7 @@ canvas{
         </div>
         <div class="modal-field">
             <div class="modal-label">Fecha de nacimiento</div>
-            <input id="editBirth" class="modal-input" type="date">
+            <input id="editBirth" class="modal-input" type="text" placeholder="27 SEPT / SEP 2010">
         </div>
         <div class="modal-field">
             <div class="modal-label">Foto del DNI (Captura)</div>
@@ -804,9 +912,9 @@ canvas{
     </div>
 </div>
 
-<!-- BARRA INFERIOR -->
+<!-- FOOTER FIJO GLOBAL -->
 <div class="bottom-nav">
-    <div class="nav-item active-nav" onclick="showScreenWithLag('homeScreen')">
+    <div class="nav-item active-nav" onclick="showScreenWithLag('homeScreen', 'Dni Digital')">
         <svg class="nav-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
         <div style="margin-top:2px;">Inicio</div>
     </div>
@@ -824,8 +932,9 @@ canvas{
     </div>
 </div>
 
+<!-- MENÚ SIDEBAR -->
 <div id="sideMenu" style="position:fixed; top:0; left:-100%; width:85%; max-width:320px; height:100%; background:#f5f5f5; z-index:99999; transition:.3s; overflow-y:auto; box-shadow:10px 0 30px rgba(0,0,0,0.2);">
-    <div style="background:#2f31b7; padding:24px 16px; color:white; position:relative;">
+    <div style="background:#2b30be; padding:24px 16px; color:white; position:relative;">
         <div onclick="closeMenu()" style="font-size:24px; cursor:pointer; margin-bottom: 20px;">←</div>
         <div style="font-size:18px; font-weight:bold;" id="menuName">BEN ASTBURY</div>
         <div style="font-size:14px; opacity:0.8; margin-top:4px;" id="menuCUIL">CUIL: 20-50676407-9</div>
@@ -842,7 +951,7 @@ canvas{
 let data = {
     name: "BEN ASTBURY",
     dni: "50.676.407",
-    birth: "2010-09-27",
+    birth: "27 SEPT / SEP 2010",
     active: true,
     customImage: null,
     faceImage: null
@@ -863,8 +972,7 @@ function closeMenu(){
 }
 
 function openDetail(){
-    showScreenWithLag('detailScreen');
-    
+    showScreenWithLag('detailScreen', 'Dni Digital');
     document.getElementById("detailFullNameTitle").innerText = data.name;
 
     let spaceIndex = data.name.indexOf(" ");
@@ -878,6 +986,9 @@ function openDetail(){
     
     document.getElementById("detDNI").innerText = data.dni;
     document.getElementById("detailBirth").innerText = data.birth;
+    
+    let cleanDNI = data.dni.replace(/\./g, "");
+    document.getElementById("barcodeNumber").innerText = "00" + cleanDNI + "1";
 
     let detailAvatarImage = document.getElementById("detailAvatarImage");
     if(data.faceImage){
@@ -949,46 +1060,20 @@ function toggleDNI(){
     render();
 }
 
-function showScreen(id){
+function showScreenWithLag(id, titleText){
     document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-
-    document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active-nav"));
-    if(id === 'homeScreen') {
-        document.querySelectorAll(".nav-item")[0].classList.add("active-nav");
-    }
-}
-
-function showScreenWithLag(id){
-    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById("loadingTitle").innerText = titleText || "Dni Digital";
     document.getElementById("loadingScreen").classList.add("active");
     
     setTimeout(function(){
         document.getElementById("loadingScreen").classList.remove("active");
         document.getElementById(id).classList.add("active");
-    }, 1000);
-}
-
-function validateAndGoDNI(){
-    let pinField = document.getElementById("loginPinField");
-    let errorText = document.getElementById("pinErrorText");
-    let value = pinField.value.trim();
-    
-    if(value === ""){
-        pinField.classList.add("error");
-        errorText.style.display = "block";
-    } else {
-        pinField.classList.remove("error");
-        errorText.style.display = "none";
-        showScreenWithLag("dniScreen");
-    }
-}
-
-function clearPinError(){
-    let pinField = document.getElementById("loginPinField");
-    let errorText = document.getElementById("pinErrorText");
-    pinField.classList.remove("error");
-    errorText.style.display = "none";
+        
+        document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active-nav"));
+        if(id === 'homeScreen') {
+            document.querySelectorAll(".nav-item")[0].classList.add("active-nav");
+        }
+    }, 600);
 }
 
 function formatDNI(input){

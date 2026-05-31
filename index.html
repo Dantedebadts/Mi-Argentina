@@ -432,7 +432,7 @@ canvas{
     font-weight: bold;
 }
 
-/* NUEVA CUADRÍCULA DE OPCIONES (4x2 EXACTO) */
+/* CUADRÍCULA DE OPCIONES (4x2 EXACTO) */
 .options-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -536,6 +536,7 @@ canvas{
 </div>
 
 <div class="screen active" id="homeScreen">
+    <!-- HEADER AZUL OFICIAL -->
     <div style="background: #2f31b7; height: 140px; color: white; padding: 20px; position: relative; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
         <div onclick="openMenu()" style="font-size: 26px; position: absolute; left: 20px; top: 22px; cursor: pointer; font-weight: bold;">
             ☰
@@ -553,6 +554,7 @@ canvas{
 
     <div class="page" style="margin-top: -18px; display: flex; flex-direction: column; gap: 14px;">
         
+        <!-- TURNOS PROGRAMADOS -->
         <div style="background: white; border-radius: 16px; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eef0f5;">
             <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
                 <div style="width: 42px; height: 42px; color: #3632cf; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -563,6 +565,7 @@ canvas{
             <button style="background: #3632cf; color: white; border: none; padding: 10px 22px; border-radius: 25px; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 2px 6px rgba(54,50,207,0.2);">Sacá turno</button>
         </div>
 
+        <!-- CREDENCIALES AL DÍA -->
         <div style="background: #e2f6ec; border-radius: 16px; padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #ceeadd;">
             <div style="font-size: 18px; color: #155734; font-weight: bold; flex: 1; padding-right: 15px; letter-spacing: -0.3px; line-height: 1.2;">
                 ¡Todas tus credenciales están al día!
@@ -579,7 +582,9 @@ canvas{
             ¿Qué necesitás hoy?
         </div>
 
+        <!-- CUADRÍCULA CORREGIDA (VA DIRECTO A DOCUMENTOS SIN PEDIR PIN) -->
         <div class="options-grid">
+            <!-- FILA 1 -->
             <div class="option-item" onclick="showScreenWithLag('docsScreen')">
                 <div class="option-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.5"></circle><line x1="15" y1="9" x2="19" y2="9"></line><line x1="15" y1="13" x2="18" y2="13"></line></svg>
@@ -605,6 +610,7 @@ canvas{
                 <div class="option-text">Salud</div>
             </div>
 
+            <!-- FILA 2 -->
             <div class="option-item">
                 <div class="option-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"></rect><line x1="12" y1="5" x2="12" y2="19"></line><text x="7" y="14" font-size="8" font-weight="bold" fill="currentColor" stroke="none" style="font-family: sans-serif;">$</text></svg>
@@ -631,6 +637,7 @@ canvas{
             </div>
         </div>
 
+        <!-- BANNER DE PRÓXIMO FERIADO -->
         <div style="background: #cfe2fe; border-radius: 16px; padding: 18px; margin-top: 10px; display: flex; align-items: center; gap: 16px; border: 1px solid #b4d3fe; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
             <div style="background: white; border-radius: 12px; width: 56px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #a4c6fc; flex-shrink: 0;">
                 <div style="width:100%; background:#ec407a; height:12px; border-top-left-radius:11px; border-top-right-radius:11px; position:relative;">
@@ -656,7 +663,8 @@ canvas{
         Documentos
     </div>
     <div class="page">
-        <div class="doc-option" onclick="showScreenWithLag('loginScreen')">
+        <!-- AL TOCAR EL DNI, VA DIRECTO A DNI EN VEZ DE LOGIN -->
+        <div class="doc-option" onclick="showScreenWithLag('dniScreen')">
             <div class="doc-left">Documento Nacional de Identidad (DNI)</div>
             <div class="arrow">›</div>
         </div>
@@ -796,6 +804,7 @@ canvas{
     </div>
 </div>
 
+<!-- BARRA INFERIOR -->
 <div class="bottom-nav">
     <div class="nav-item active-nav" onclick="showScreenWithLag('homeScreen')">
         <svg class="nav-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
